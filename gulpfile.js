@@ -66,6 +66,10 @@ gulp.task('build:pages', function() {
             })
             .use(markdown())
             .use(excerpts())
+            .use(permalinks({
+                pattern: ':permalink',
+                relative: false,
+            }))
             .use(templates({
                 engine: 'swig',
                 autoescape: false,

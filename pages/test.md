@@ -4,6 +4,7 @@ publishDate: 2015-01-01
 modifyDate: 2015-01-01
 author: Rob Ribeiro
 template: test.html
+permalink: /test/
 ---
 
 This is just a test
