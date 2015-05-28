@@ -1,0 +1,11 @@
+session_name: metalsmith
+windows:
+  - window_name: bash
+    panes:
+      -
+  - window_name: vim
+    panes:
+      - vim
+  - window_name: misc
+    panes:
+      - gulp

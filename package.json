@@ -1,0 +1,18 @@
+{
+  "name": "internal",
+  "dependencies": {
+    "bower": "^1.4.1",
+    "browser-sync": "^2.7.6",
+    "gulp": "^3.8.11",
+    "gulp-sass": "^2.0.1",
+    "metalsmith": "^1.7.0",
+    "metalsmith-branch": "^0.0.4",
+    "metalsmith-collections": "^0.7.0",
+    "metalsmith-excerpts": "^1.0.0",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-permalinks": "^0.4.0",
+    "metalsmith-templates": "^0.7.0",
+    "moment": "^2.10.3",
+    "swig": "^1.4.2"
+  }
+}
