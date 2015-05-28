@@ -19,13 +19,12 @@ var fs = require('fs');
 
 
 // Default task
-gulp.task('default', ['serve']);
-
-// Build project
-gulp.task('build', ['clean', 'images', 'scripts', 'styles', 'vendor']);
+gulp.task('default', [
+    'serve',
+]);
 
 // Static Server & watching scss/html files
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', ['build'], function() {
     browsersync.init({
         server: 'build'
     });
@@ -33,26 +32,36 @@ gulp.task('serve', ['sass'], function() {
     gulp.watch('views/*.html').on('change', browsersync.reload);
 });
 
+// Build project
+gulp.task('build', [
+     'build:clean',
+     'build:images',
+     'build:scripts',
+     'build:sources',
+     'build:styles',
+     'build:vendor',
+]);
+
 // Clean build directory
-gulp.task('clean', function () {
+gulp.task('build:clean', function () {
     del(['build/**/*']);
 });
 
 // Copy images
-gulp.task('images', function() {
+gulp.task('build:images', function() {
     return gulp.src('images/**/*')
         .pipe(gulp.dest('build/images'));
 });
 
 // Compile scripts
-gulp.task('scripts', function() {
+gulp.task('build:scripts', function() {
     return gulp.src('scripts/**/*.coffee')
         .pipe(coffee({bare: true}).on('error', gutil.log))
         .pipe(gulp.dest('build/scripts'));
 });
 
 // Build sources
-gulp.task('sources', function() {
+gulp.task('build:sources', function() {
     return gulp.src('./sources/**/*')
         .pipe(matter()).on("data", function(file) {
             assign(file, file.frontMatter);
@@ -75,7 +84,7 @@ gulp.task('sources', function() {
 });
 
 // Compile sass into CSS & auto-inject into browsers
-gulp.task('styles', function() {
+gulp.task('build:styles', function() {
     return gulp.src('styles/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('build/styles'))
@@ -83,7 +92,7 @@ gulp.task('styles', function() {
 });
 
 // Copy vendor code
-gulp.task('vendor', function() {
+gulp.task('build:vendor', function() {
     return gulp.src('vendor/**/*')
         .pipe(gulp.dest('build/vendor'));
 });
