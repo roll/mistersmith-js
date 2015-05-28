@@ -22,7 +22,7 @@ metalsmith(__dirname)
   .use(templates({
       engine: 'swig',
       autoescape: false,
-      directory: 'templates',
+      directory: 'views',
       moment: moment
   }))
   .build(function (err) {

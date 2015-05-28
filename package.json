@@ -3,6 +3,7 @@
   "dependencies": {
     "bower": "^1.4.1",
     "browser-sync": "^2.7.6",
+    "del": "^1.2.0",
     "gulp": "^3.8.11",
     "gulp-sass": "^2.0.1",
     "metalsmith": "^1.7.0",
