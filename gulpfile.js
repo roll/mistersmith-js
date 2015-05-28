@@ -1,16 +1,21 @@
-var del = require('del');
 var gulp = require('gulp');
 var sass = require('gulp-sass')
 var gutil = require('gulp-util');
 var gsmith = require('gulpsmith');
 var coffee = require('gulp-coffee');
 var matter = require('gulp-front-matter');
+var branch = require('metalsmith-branch');
+var collections = require('metalsmith-collections');
 var markdown = require('metalsmith-markdown');
 var excerpts = require('metalsmith-excerpts');
+var permalinks = require('metalsmith-permalinks');
 var templates = require('metalsmith-templates');
 var browsersync = require('browser-sync').create();
 var assign = require('lodash.assign');
 var moment = require('moment');
+var yaml = require('js-yaml');
+var del = require('del');
+var fs = require('fs');
 
 
 // Default task
@@ -55,9 +60,7 @@ gulp.task('sources', function() {
         })
         .pipe(gsmith()
             .metadata({
-                site: {
-                  title: 'My Site',
-                }
+                site: yaml.load(fs.readFileSync('params/site.yaml')),
             })
             .use(markdown())
             .use(excerpts())
