@@ -7,6 +7,8 @@ var permalinks = require('metalsmith-permalinks');
 var templates = require('metalsmith-templates');
 var moment = require('moment');
 
+
+// Build sources
 metalsmith(__dirname)
   .metadata({
     site: {
