@@ -36,8 +36,8 @@ gulp.task('serve', ['build'], function() {
 gulp.task('build', [
      'build:clean',
      'build:images',
+     'build:pages',
      'build:scripts',
-     'build:sources',
      'build:styles',
      'build:vendor',
 ]);
@@ -53,34 +53,34 @@ gulp.task('build:images', function() {
         .pipe(gulp.dest('build/images'));
 });
 
-// Compile scripts
-gulp.task('build:scripts', function() {
-    return gulp.src('scripts/**/*.coffee')
-        .pipe(coffee({bare: true}).on('error', gutil.log))
-        .pipe(gulp.dest('build/scripts'));
-});
-
-// Build sources
-gulp.task('build:sources', function() {
-    return gulp.src('./sources/**/*')
+// Build pages
+gulp.task('build:pages', function() {
+    return gulp.src('./pages/**/*')
         .pipe(matter()).on("data", function(file) {
             assign(file, file.frontMatter);
             delete file.frontMatter;
         })
         .pipe(gsmith()
             .metadata({
-                site: yaml.load(fs.readFileSync('params/site.yaml')),
+                site: yaml.load(fs.readFileSync('metadata/site.yaml')),
             })
             .use(markdown())
             .use(excerpts())
             .use(templates({
                 engine: 'swig',
                 autoescape: false,
-                directory: 'views',
+                directory: 'templates',
                 moment: moment,
             }))
         )
         .pipe(gulp.dest('build'));
+});
+
+// Compile scripts
+gulp.task('build:scripts', function() {
+    return gulp.src('scripts/**/*.coffee')
+        .pipe(coffee({bare: true}).on('error', gutil.log))
+        .pipe(gulp.dest('build/scripts'));
 });
 
 // Compile sass into CSS & auto-inject into browsers
