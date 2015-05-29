@@ -4,9 +4,14 @@ var gutil = require('gulp-util');
 var coffee = require('gulp-coffee');
 
 
-// Compile scripts
+// Build theme scripts
 gulp.task('build:theme:scripts', function() {
     return gulp.src('theme/scripts/**/*.coffee')
         .pipe(coffee({bare: true}).on('error', gutil.log))
         .pipe(gulp.dest('build/theme/scripts'));
+});
+
+// Build theme scripts (watch)
+gulp.task('build:theme:scripts#watch', function() {
+    gulp.watch('theme/scripts/**/*', ['build:theme:scripts']);
 });

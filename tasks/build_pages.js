@@ -37,3 +37,8 @@ gulp.task('build:pages', function() {
         )
         .pipe(gulp.dest('build'));
 });
+
+// Build pages (watch)
+gulp.task('build:pages#watch', function() {
+    gulp.watch('pages/**/*', ['build:pages']);
+});

@@ -11,3 +11,8 @@ gulp.task('build:theme:styles', function() {
         .pipe(gulp.dest('build/theme/styles'))
         .pipe(browsersync.stream());
 });
+
+// Build theme styles (watch)
+gulp.task('build:theme:styles#watch', function() {
+    gulp.watch('theme/styles/**/*', ['build:theme:styles']);
+});

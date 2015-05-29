@@ -5,18 +5,7 @@ var config = require('./loaders/config');
 
 
 // Static Server & watching scss/html files
-gulp.task('serve', ['build'], function() {
-
-    // Init browsersync
+gulp.task('serve', ['build', 'build#watch'], function() {
     browsersync.init(config.browsersync);
-
-    // Start watching
-    gulp.watch('media/**/*', ['build:media']);
-    gulp.watch('pages/**/*', ['build:pages']);
-    gulp.watch('theme/images/**/*', ['build:theme:images']);
-    gulp.watch('theme/scripts/**/*', ['build:theme:scripts']);
-    gulp.watch('theme/styles/**/*', ['build:theme:styles']);
-    gulp.watch('theme/vendor/**/*', ['build:theme:vendor']);
     gulp.watch('build/**/*', browsersync.reload);
-
 });

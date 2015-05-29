@@ -18,3 +18,13 @@ gulp.task('build', function(callback) {
         callback
     );
 });
+
+// Build site (watch)
+gulp.task('build#watch', [
+    'build:media#watch',
+    'build:pages#watch',
+    'build:theme:images#watch',
+    'build:theme:scripts#watch',
+    'build:theme:styles#watch',
+    'build:theme:vendor#watch',
+]);
