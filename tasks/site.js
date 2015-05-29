@@ -1,14 +1,12 @@
 'use strict';
-var del = require('del');
 var gulp = require('gulp');
-var sequence = require('run-sequence');
-var browsersync = require('browser-sync').create();
 var config = require('./loaders/config');
+var packages = require('./loaders/packages');
 
 
 // Build
 gulp.task('site#build', function(callback) {
-    sequence(
+    packages.runsequence(
         'site#clean',
         [
             'site:media#build',
@@ -24,13 +22,13 @@ gulp.task('site#build', function(callback) {
 
 // Clean
 gulp.task('site#clean', function (callback) {
-    del(['build/**/*'], callback);
+    packages.del(['build/**/*'], callback);
 });
 
 // Serve
 gulp.task('site#serve', ['site#build', 'site#watch'], function() {
-    browsersync.init(config.browsersync);
-    gulp.watch('build/**/*', browsersync.reload);
+    packages.browsersync.init(config.browsersync);
+    gulp.watch('build/**/*', packages.browsersync.reload);
 });
 
 // Watch

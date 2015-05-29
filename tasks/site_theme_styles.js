@@ -1,15 +1,13 @@
 'use strict';
 var gulp = require('gulp');
-var sass = require('gulp-sass')
-var browsersync = require('browser-sync').create();
+var packages = require('./loaders/packages');
 
 
 // Build
 gulp.task('site:theme:styles#build', function() {
     return gulp.src('theme/styles/*.scss')
-        .pipe(sass())
+        .pipe(packages.sass())
         .pipe(gulp.dest('build/theme/styles'))
-        .pipe(browsersync.stream());
 });
 
 // Watch

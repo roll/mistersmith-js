@@ -1,13 +1,12 @@
 'use strict';
 var gulp = require('gulp');
-var gutil = require('gulp-util');
-var coffee = require('gulp-coffee');
+var packages = require('./loaders/packages');
 
 
 // Build
 gulp.task('site:theme:scripts#build', function() {
     return gulp.src('theme/scripts/**/*.coffee')
-        .pipe(coffee({bare: true}).on('error', gutil.log))
+        .pipe(packages.coffee({bare: true}).on('error', packages.util.log))
         .pipe(gulp.dest('build/theme/scripts'));
 });
 
