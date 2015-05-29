@@ -1,7 +1,7 @@
 'use strict';
 var gulp = require('gulp');
-var data = require('./loaders/data');
-var packages = require('./loaders/packages');
+var data = require('../loaders/data');
+var packages = require('../loaders/packages');
 
 
 // Build
