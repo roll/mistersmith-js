@@ -13,8 +13,8 @@ var moment = require('moment');
 var data = require('./loaders/data');
 
 
-// Build pages
-gulp.task('build:pages', function() {
+// Build
+gulp.task('site:pages#build', function() {
     return gulp.src('./pages/**/*')
         .pipe(matter()).on("data", function(file) {
             assign(file, file.frontMatter);
@@ -38,7 +38,7 @@ gulp.task('build:pages', function() {
         .pipe(gulp.dest('build'));
 });
 
-// Build pages (watch)
-gulp.task('build:pages#watch', function() {
-    gulp.watch('pages/**/*', ['build:pages']);
+// Watch
+gulp.task('site:pages#watch', function() {
+    gulp.watch('pages/**/*', ['site:pages#build']);
 });
