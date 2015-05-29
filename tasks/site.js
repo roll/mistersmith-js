@@ -33,6 +33,7 @@ gulp.task('site#serve', ['site#build', 'site#watch'], function() {
 
 // Watch
 gulp.task('site#watch', [
+    'site:data#watch',
     'site:media#watch',
     'site:pages#watch',
     'site:theme:images#watch',
