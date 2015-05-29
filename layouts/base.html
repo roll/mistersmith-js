@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>{{ title }} - {{ site.title }}</title>
+
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/vendor/uikit/css/uikit.css">
+
+  <script src="/vendor/jquery/dist/jquery.js"></script>
+  <script src="/vendor/uikit/js/uikit.js"></script>
+  <script src="/vendor/uikit/js/components/sticky.js"></script>
+
 </head>
 <body>
-  {% block content %}
+
+  {% block contents %}
   {{ contents }}
   {% endblock %}
+
 </body>
 </html>

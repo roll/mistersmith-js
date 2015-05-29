@@ -9,9 +9,8 @@ gulp.task('site:build', function(callback) {
     packages.runsequence(
         'site:clean',
         [
-            'media:build',
-            'pages:build',
             'images:build',
+            'pages:build',
             'scripts:build',
             'styles:build',
             'vendor:build',
@@ -34,9 +33,9 @@ gulp.task('site:serve', ['site:build', 'site:watch'], function() {
 // Watch
 gulp.task('site:watch', [
     'data:watch',
-    'media:watch',
-    'pages:watch',
     'images:watch',
+    'layouts:watch',
+    'pages:watch',
     'scripts:watch',
     'styles:watch',
     'vendor:watch',
