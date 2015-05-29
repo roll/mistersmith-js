@@ -4,7 +4,6 @@ var gulp = require('gulp');
 
 // Build project
 gulp.task('build', [
-     'build:clean',
      'build:media',
      'build:pages',
      'build:theme:images',

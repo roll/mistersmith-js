@@ -14,7 +14,7 @@ var data = require('./loaders/data');
 
 
 // Build pages
-gulp.task('build:pages', function() {
+gulp.task('build:pages', ['build:clean'], function() {
     return gulp.src('./pages/**/*')
         .pipe(matter()).on("data", function(file) {
             assign(file, file.frontMatter);
