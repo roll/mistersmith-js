@@ -1,3 +1,5 @@
 /.sash-cache/
 /build/
 /node_modules/
+npm_debug.log
+tags
