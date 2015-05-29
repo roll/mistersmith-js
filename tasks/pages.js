@@ -5,10 +5,11 @@ var packages = require('./loaders/packages');
 
 
 // Build
-gulp.task('site:pages#build', function() {
-    return gulp.src('./pages/**/*')
+gulp.task('pages:build', function() {
+    return gulp.src('pages/**/*')
         .pipe(packages.frontmatter()).on("data", function(file) {
             packages.assign(file, file.frontMatter);
+            file.template = file.template || file.layout || 'base.html';
             delete file.frontMatter;
         })
         .pipe(packages.gulpsmith()
@@ -22,7 +23,7 @@ gulp.task('site:pages#build', function() {
             .use(packages.templates({
                 engine: 'swig',
                 autoescape: false,
-                directory: 'theme/templates',
+                directory: 'layouts',
                 moment: packages.moment,
             }))
         )
@@ -30,6 +31,6 @@ gulp.task('site:pages#build', function() {
 });
 
 // Watch
-gulp.task('site:pages#watch', function() {
-    gulp.watch('pages/**/*', ['site:pages#build']);
+gulp.task('pages:watch', function() {
+    gulp.watch('pages/**/*', ['pages:build']);
 });
