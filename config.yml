@@ -1,3 +1,6 @@
+# Browsersync
 browsersync:
-  name: default
-
+  server: 'build'
+  port: 3100
+  ui:
+    port: 3101
