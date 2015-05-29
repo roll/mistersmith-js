@@ -5,7 +5,7 @@ var browsersync = require('browser-sync').create();
 
 
 // Compile sass into CSS & auto-inject into browsers
-gulp.task('build:theme:styles', ['clean'], function() {
+gulp.task('build:theme:styles', function() {
     return gulp.src('theme/styles/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('build/theme/styles'))

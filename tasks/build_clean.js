@@ -4,6 +4,6 @@ var del = require('del');
 
 
 // Clean build directory
-gulp.task('clean', function (callback) {
+gulp.task('build:clean', function (callback) {
     del(['build/**/*'], callback);
 });
