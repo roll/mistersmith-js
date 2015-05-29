@@ -1,4 +1,4 @@
-session_name: metalsmith
+session_name: mistersmith
 windows:
   - window_name: bash
     panes:
