@@ -2,3 +2,15 @@
 @import "../vendor/uikit/scss/uikit-mixins.scss";
 @import "../vendor/uikit/scss/uikit";
 @import "base";
+
+body[data-scope="index"] {
+  @import "index";
+}
+
+body[data-scope="docs"] {
+  @import "docs";
+}
+
+body[data-scope="blog"] {
+  @import "blog";
+}
