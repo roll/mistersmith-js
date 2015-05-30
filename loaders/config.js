@@ -3,4 +3,6 @@ var fs = require('fs');
 var yaml = require('js-yaml');
 
 
-module.exports = yaml.load(fs.readFileSync('config.yml'));
+module.exports = function () {
+    return yaml.load(fs.readFileSync('config.yml'));
+}

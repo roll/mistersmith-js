@@ -1,13 +1,14 @@
 'use strict';
 var gulp = require('gulp');
-var data = require('../loaders/data');
-var packages = require('../loaders/packages');
+var packages = require('../loaders/packages')();
+
 
 // Config
 packages.swig.setDefaults({'cache': false});
 
 // Build
 gulp.task('pages:build', function() {
+    var data = require('../loaders/data')();
     return gulp.src('pages/**/*')
         .pipe(packages.frontmatter()).on("data", function(file) {
             packages.assign(file, file.frontMatter);
