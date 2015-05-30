@@ -1,16 +1,19 @@
-@import "settings";
+// General
+@import "config";
 @import "../vendor/uikit-2.20.3/uikit-mixins.scss";
 @import "../vendor/uikit-2.20.3/uikit";
 @import "base";
 
-body[data-scope="index"] {
-  @import "index";
-}
+// Blocks
+@import "blocks/footer";
 
-body[data-scope="docs"] {
-  @import "docs";
+// Routes
+body[data-route="index"] {
+  @import "routes/index";
 }
-
-body[data-scope="blog"] {
-  @import "blog";
+body[data-route="docs"] {
+  @import "routes/docs";
+}
+body[data-route="blog"] {
+  @import "routes/blog";
 }

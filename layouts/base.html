@@ -4,24 +4,27 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ descriptioin }}">
+  <meta name="keywords" content="{{ keywords }}">
 
   <title>{{ title }} - {{ site.title }}</title>
 
   <link rel="icon" href="images/favicon.png">
 
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Ubuntu+Condensed&subset=latin">
   <link rel="stylesheet" href="/styles/main.css">
 
 </head>
-<body data-scope="{{ scope }}">
+<body data-route="{{ route }}">
 
-  {% include 'header.html' %}
+  {% include 'blocks/header.html' %}
 
   {% block contents %}
   {{ contents }}
   {% endblock %}
 
-  {% include 'footer.html' %}
-  {% include 'menu.html' %}
+  {% include 'blocks/footer.html' %}
+  {% include 'blocks/menu.html' %}
 
   <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/uikit.min.js"></script>
