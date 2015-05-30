@@ -19,9 +19,13 @@
 </head>
 <body>
 
+  {% include 'partials/navbar.html' %}
+
   {% block contents %}
   {{ contents }}
   {% endblock %}
+
+  {% include 'partials/offcanvas.html' %}
 
 </body>
 </html>
