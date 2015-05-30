@@ -13,7 +13,6 @@ gulp.task('site:build', function(callback) {
             'pages:build',
             'scripts:build',
             'styles:build',
-            'vendor:build',
         ],
         callback
     );
@@ -38,5 +37,4 @@ gulp.task('site:watch', [
     'pages:watch',
     'scripts:watch',
     'styles:watch',
-    'vendor:watch',
 ]);

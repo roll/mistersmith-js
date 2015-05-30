@@ -1,6 +1,0 @@
-{
-  "name": "internal",
-  "dependencies": {
-    "uikit": "^2.20.3"
-  }
-}
