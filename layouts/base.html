@@ -4,10 +4,10 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ descriptioin }}">
-  <meta name="keywords" content="{{ keywords }}">
+  <meta name="description" content="{{ descriptioin | default(site.description) }}">
+  <meta name="keywords" content="{{ keywords | default(site.keywords) }}">
 
-  <title>{{ title }} - {{ site.title }}</title>
+  <title>{% if title %}{{ title }} - {% endif %}{{ site.title }}</title>
 
   <link rel="icon" href="images/favicon.png">
 
