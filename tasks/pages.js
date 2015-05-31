@@ -19,7 +19,7 @@ gulp.task('pages:build', function() {
         .pipe(packages.gulpsmith()
             .metadata(data)
             .use(packages.branch()
-                .pattern('.md')
+                .pattern('**/*.md')
                 .use(packages.markdown())
             )
             .use(packages.excerpts())
