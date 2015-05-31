@@ -1,44 +1,44 @@
 'use strict';
 var gulp = require('gulp');
-var packages = require('./loaders/packages')();
+var stack = require('./loaders/stack')();
 
 
 // Config
-packages.swig.setDefaults({'cache': false});
+stack.swig.setDefaults({'cache': false});
 
 // Build
 gulp.task('pages:build', function() {
     var data = require('./loaders/data')();
     return gulp.src('pages/**/*')
-        .pipe(packages.frontmatter()).on("data", function(file) {
-            packages.assign(file, file.frontMatter);
+        .pipe(stack.frontmatter()).on('data', function(file) {
+            stack.assign(file, file.frontMatter);
             file.template = file.template || file.layout;
             file.scope = file.scope;
             delete file.frontMatter;
         })
-        .pipe(packages.gulpsmith()
+        .pipe(stack.gulpsmith()
             .metadata(data)
-            .use(packages.branch()
+            .use(stack.branch()
                 .pattern('**/*.md')
-                .use(packages.markdown())
+                .use(stack.markdown())
             )
-            .use(packages.excerpts())
-            .use(packages.permalinks({
+            .use(stack.excerpts())
+            .use(stack.permalinks({
                 pattern: ':permalink',
                 relative: false,
             }))
-            .use(packages.templates({
+            .use(stack.templates({
                 engine: 'swig',
                 inPlace: true,
                 autoescape: false,
-                moment: packages.moment,
+                moment: stack.moment,
             }))
-            .use(packages.templates({
+            .use(stack.templates({
                 engine: 'swig',
                 inPlace: false,
                 autoescape: false,
                 directory: 'layouts',
-                moment: packages.moment,
+                moment: stack.moment,
             }))
         )
         .pipe(gulp.dest('build'));

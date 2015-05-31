@@ -1,14 +1,17 @@
 'use strict';
 var gulp = require('gulp');
-var config = require('./loaders/config')();
-var packages = require('./loaders/packages')();
+var stack = require('./loaders/stack')();
 
 
 // Build
 gulp.task('styles:build', function() {
-    return gulp.src('styles/*.scss')
-        .pipe(packages.sass())
-        .pipe(packages.autoprefixer(config.autoprefixer))
+    var config = require('./loaders/data')({'key': 'stack'});
+    return gulp.src('styles/**/*.scss')
+        .pipe(stack.sourcemaps.init())
+        .pipe(stack.sass(config.sass))
+        .pipe(stack.autoprefixer(config.autoprefixer))
+        .pipe(stack.minifycss(config.minifycss))
+        .pipe(stack.sourcemaps.write('maps'))
         .pipe(gulp.dest('build/styles'))
 });
 

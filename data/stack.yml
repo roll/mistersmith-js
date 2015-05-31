@@ -1,0 +1,19 @@
+# Autoprefixer
+autoprefixer:
+  browsers:
+    - last 2 versions
+
+# Browsersync
+browsersync:
+  server: 'build'
+  port: 3100
+  ui:
+    port: 3101
+
+# Sass
+sass:
+  precision: 7
+
+# Minifycss
+minifycss:
+  debug: false

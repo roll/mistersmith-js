@@ -1,12 +1,12 @@
 'use strict';
 var gulp = require('gulp');
-var packages = require('./loaders/packages')();
+var stack = require('./loaders/stack')();
 
 
 // Build
 gulp.task('scripts:build', function() {
     return gulp.src('scripts/**/*.coffee')
-        .pipe(packages.coffee({bare: true}).on('error', packages.util.log))
+        .pipe(stack.coffee({bare: true}).on('error', stack.util.log))
         .pipe(gulp.dest('build/scripts'));
 });
 
