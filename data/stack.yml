@@ -17,3 +17,9 @@ sass:
 # Minifycss
 minifycss:
   debug: false
+    Autoprefixer
+
+# Nunjucks
+nunjucks:
+  autoescape: false
+  watch: false

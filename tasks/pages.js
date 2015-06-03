@@ -3,12 +3,10 @@ var gulp = require('gulp');
 var stack = require('./loaders/stack')();
 
 
-// Config
-stack.swig.setDefaults({'cache': false});
-
 // Build
 gulp.task('pages:build', function() {
     var data = require('./loaders/data')();
+    stack.nunjucks.configure('layouts', data.stack.nunjucks);
     return gulp.src('pages/**/*')
         .pipe(stack.frontmatter()).on('data', function(file) {
             stack.assign(file, file.frontMatter);
@@ -28,15 +26,13 @@ gulp.task('pages:build', function() {
                 relative: false,
             }))
             .use(stack.templates({
-                engine: 'swig',
+                engine: 'nunjucks',
                 inPlace: true,
-                autoescape: false,
                 moment: stack.moment,
             }))
             .use(stack.templates({
-                engine: 'swig',
+                engine: 'nunjucks',
                 inPlace: false,
-                autoescape: false,
                 directory: 'layouts',
                 moment: stack.moment,
             }))
