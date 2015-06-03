@@ -1,4 +1,5 @@
 'use strict';
+var path = require('path');
 var gulp = require('gulp');
 var stack = require('./loaders/stack')();
 
@@ -26,7 +27,11 @@ gulp.task('site:clean', function (callback) {
 gulp.task('site:serve', ['site:build', 'site:watch'], function() {
     var config = require('./loaders/data')({'key': 'stack'});
     stack.browsersync.init(config.browsersync);
-    gulp.watch('build/**/*', stack.browsersync.reload);
+    gulp.watch('build/**/*', function(file) {
+        var relpath = path.relative('build', file.path);
+        if (path.extname(relpath) == '.map') return;
+        stack.browsersync.reload(relpath);
+    });
 });
 
 // Watch
