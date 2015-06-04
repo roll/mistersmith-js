@@ -23,15 +23,21 @@ gulp.task('site:clean', function (callback) {
     stack.del(['build/**/*'], callback);
 });
 
-// Serve
-gulp.task('site:serve', ['site:build', 'site:watch'], function() {
-    var config = require('./loaders/data')({'key': 'stack'});
-    stack.browsersync.init(config.browsersync);
-    gulp.watch('build/**/*', function(file) {
-        var relpath = path.relative('build', file.path);
-        if (path.extname(relpath) == '.map') return;
-        stack.browsersync.reload(relpath);
-    });
+gulp.task('site:serve', function(callback) {
+    stack.runsequence(
+        'site:build',
+        'site:watch',
+        function() {
+            var data = require('./loaders/data')();
+            stack.browsersync.init(data.stack.browsersync);
+            gulp.watch('build/**/*', function(file) {
+                var relpath = path.relative('build', file.path);
+                if (path.extname(relpath) == '.map') return;
+                stack.browsersync.reload(relpath);
+            });
+            callback();
+        }
+    );
 });
 
 // Watch

@@ -10,6 +10,15 @@ browsersync:
   ui:
     port: 3101
 
+# Coffee
+coffee:
+  bare: true
+
+# Imagemin
+imagemin:
+  progressive: true
+  interlaced: true
+
 # Sass
 sass:
   precision: 7

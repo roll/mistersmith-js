@@ -1,6 +1,8 @@
 'use strict';
 var gulp = require('gulp');
+var error = require('./handlers/error');
 var stack = require('./loaders/stack')();
+var watch = false;
 
 
 // Build
@@ -14,6 +16,8 @@ gulp.task('pages:build', function() {
             file.scope = file.scope;
             delete file.frontMatter;
         })
+        //Plumber doesn't work before frontmatter
+        .pipe(stack.if(watch, stack.plumber(error)))
         .pipe(stack.gulpsmith()
             .metadata(data)
             .use(stack.branch()
@@ -43,4 +47,5 @@ gulp.task('pages:build', function() {
 // Watch
 gulp.task('pages:watch', function() {
     gulp.watch('pages/**/*', ['pages:build']);
+    watch = true;
 });
