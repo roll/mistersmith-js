@@ -1,3 +1,4 @@
-console.log('Hello')
-console.log('World')
-console.log('!')
+jQuery =>
+  app = new Application()
+  # app.register(new SomeModule())
+  app.run()
