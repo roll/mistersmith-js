@@ -9,7 +9,7 @@ var watch = false;
 gulp.task('pages:build', function() {
     var data = require('./loaders/data')();
     stack.nunjucks.configure('layouts', data.stack.nunjucks);
-    return gulp.src('pages/**/*')
+    return gulp.src('pages/**/*.*')
         .pipe(stack.frontmatter()).on('data', function(file) {
             stack.assign(file, file.frontMatter);
             file.template = file.template || file.layout;
@@ -20,10 +20,7 @@ gulp.task('pages:build', function() {
         .pipe(stack.if(watch, stack.plumber(error)))
         .pipe(stack.gulpsmith()
             .metadata(data)
-            .use(stack.branch()
-                .pattern('**/*.md')
-                .use(stack.markdown())
-            )
+            .use(stack.markdown())
             .use(stack.excerpts())
             .use(stack.permalinks({
                 pattern: ':permalink',
@@ -46,6 +43,6 @@ gulp.task('pages:build', function() {
 
 // Watch
 gulp.task('pages:watch', function() {
-    gulp.watch('pages/**/*', ['pages:build']);
+    gulp.watch('pages/**/*.*', ['pages:build']);
     watch = true;
 });

@@ -8,7 +8,7 @@ var watch = false;
 // Build
 gulp.task('images:build', function() {
     var data = require('./loaders/data')();
-    return gulp.src('images/**/*')
+    return gulp.src('images/**/*.*')
         .pipe(stack.if(watch, stack.plumber(error)))
         .pipe(stack.cache(stack.imagemin(data.stack.imagemin)))
         .pipe(gulp.dest('build/images'));
@@ -16,6 +16,6 @@ gulp.task('images:build', function() {
 
 // Watch
 gulp.task('images:watch', function() {
-    gulp.watch('images/**/*', ['images:build']);
+    gulp.watch('images/**/*.*', ['images:build']);
     watch = true;
 });

@@ -20,6 +20,6 @@ gulp.task('scripts:build', function() {
 
 // Watch
 gulp.task('scripts:watch', function() {
-    gulp.watch('scripts/**/*', ['scripts:build']);
+    gulp.watch('scripts/**/*.coffee', ['scripts:build']);
     watch = true;
 });

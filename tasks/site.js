@@ -20,7 +20,7 @@ gulp.task('site:build', function(callback) {
 
 // Clean
 gulp.task('site:clean', function (callback) {
-    stack.del(['build/**/*'], callback);
+    stack.del(['build/**/*.*'], callback);
 });
 
 gulp.task('site:serve', function(callback) {
@@ -30,7 +30,7 @@ gulp.task('site:serve', function(callback) {
         function() {
             var data = require('./loaders/data')();
             stack.browsersync.init(data.stack.browsersync);
-            gulp.watch('build/**/*', function(file) {
+            gulp.watch('build/**/*.*', function(file) {
                 var relpath = path.relative('build', file.path);
                 if (path.extname(relpath) == '.map') return;
                 stack.browsersync.reload(relpath);

@@ -20,6 +20,6 @@ gulp.task('styles:build', function() {
 
 // Watch
 gulp.task('styles:watch', function() {
-    gulp.watch('styles/**/*', ['styles:build']);
+    gulp.watch('styles/**/*.scss', ['styles:build']);
     watch = true;
 });
