@@ -1,8 +1,9 @@
 'use strict';
 var gulp = require('gulp');
 var error = require('./handlers/error');
-var pages = require('./plugins/pages');
 var stack = require('./loaders/stack')();
+var pages = require('./plugins/pages');
+var headings = require('./plugins/headings');
 var watch = false;
 
 
@@ -24,6 +25,7 @@ gulp.task('pages:build', function() {
             .use(stack.metallic())
             .use(stack.wordcount())
             .use(stack.markdown(data.stack.markdown))
+            .use(headings())
             .use(stack.excerpts())
             .use(stack.permalinks({
                 pattern: ':permalink',
