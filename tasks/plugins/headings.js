@@ -29,7 +29,7 @@ function plugin(options) {
 
   // set default options or args
   opts.allow = opts.allow || false;
-  opts.linkTemplate = opts.linkTemplate || '<a class="heading-anchor" href="#%s"><span class="uk-icon-link"></span></a>';
+  opts.linkTemplate = opts.linkTemplate || ' <a class="heading-anchor" href="#%s"><span class="uk-icon-link"></span></a>';
   opts.headingClass = opts.headingClass || ''
 
   return function(files, metalsmith, done) {
