@@ -21,6 +21,7 @@ gulp.task('pages:build', function() {
         .pipe(stack.if(watch, stack.plumber(error)))
         .pipe(stack.gulpsmith()
             .metadata(data)
+            .use(stack.metallic())
             .use(stack.markdown())
             .use(stack.excerpts())
             .use(stack.permalinks({
