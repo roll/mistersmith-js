@@ -7,6 +7,7 @@ autoprefixer:
 browsersync:
   server: 'build'
   port: 3100
+  notify: false
   ui:
     port: 3101
 
