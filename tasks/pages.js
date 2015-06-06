@@ -22,6 +22,7 @@ gulp.task('pages:build', function() {
         .pipe(stack.gulpsmith()
             .metadata(data)
             .use(stack.metallic())
+            .use(stack.wordcount())
             .use(stack.markdown())
             .use(stack.excerpts())
             .use(stack.permalinks({
