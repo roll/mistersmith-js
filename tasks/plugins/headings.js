@@ -1,5 +1,5 @@
 'use strict';
-// TODO: refactor/use fixed upstream version
+// TODO: refactor/use fixed upstream version/merge with metalsmith.headings as heads?
 // https://github.com/majodev/metalsmith-headings-identifier
 var util = require("util");
 var extname = require('path').extname;

@@ -26,6 +26,7 @@ gulp.task('pages:build', function() {
             .use(stack.wordcount())
             .use(stack.markdown(data.stack.markdown))
             .use(headings())
+            .use(stack.headings('h2,h3'))
             .use(stack.excerpts())
             .use(stack.permalinks({
                 pattern: ':permalink',
