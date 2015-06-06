@@ -1,4 +1,14 @@
+# General
 title: Mr. Smith
 description: Mr. Smith
 keywords: mr. smith
 google_analytics_id: UA-XXXXX-X
+
+# Pages
+pages:
+  - Home: /
+  - Docs:
+    - Introduction: /docs/
+    - Docker: /docs/docker/
+    - Nodejs: /docs/nodejs/
+  - Blog: /blog/

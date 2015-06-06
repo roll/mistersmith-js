@@ -1,6 +1,7 @@
 'use strict';
 var gulp = require('gulp');
 var error = require('./handlers/error');
+var pages = require('./plugins/pages');
 var stack = require('./loaders/stack')();
 var watch = false;
 
@@ -26,6 +27,7 @@ gulp.task('pages:build', function() {
                 pattern: ':permalink',
                 relative: false,
             }))
+            .use(pages())
             .use(stack.templates({
                 engine: 'nunjucks',
                 inPlace: true,
