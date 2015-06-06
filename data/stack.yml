@@ -20,6 +20,10 @@ imagemin:
   progressive: true
   interlaced: true
 
+# Markdown
+markdown:
+  gfm: true
+
 # Sass
 sass:
   precision: 7

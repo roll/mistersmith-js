@@ -23,7 +23,7 @@ gulp.task('pages:build', function() {
             .metadata(data)
             .use(stack.metallic())
             .use(stack.wordcount())
-            .use(stack.markdown())
+            .use(stack.markdown(data.stack.markdown))
             .use(stack.excerpts())
             .use(stack.permalinks({
                 pattern: ':permalink',
