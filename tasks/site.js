@@ -23,6 +23,13 @@ gulp.task('site:clean', function (callback) {
     stack.del(['build/**'], callback);
 });
 
+// Deploy
+gulp.task('site:deploy', ['site:build'], function(callback) {
+    return gulp.src('build/**')
+        .pipe(stack.ghpages())
+});
+
+// Serve
 gulp.task('site:serve', function(callback) {
     stack.runsequence(
         'site:build',
