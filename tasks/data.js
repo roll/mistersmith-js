@@ -4,5 +4,5 @@ var gulp = require('gulp');
 
 // Watch
 gulp.task('data:watch', function() {
-    gulp.watch('data/**/*.*', ['pages:build']);
+    gulp.watch('data/**', ['pages:build']);
 });
