@@ -10,12 +10,12 @@
 
   <title>{% if title %}{{ title }} - {% endif %}{{ site.title }}</title>
 
-  <link rel="icon" href="/images/favicon.png">
-  <link rel="apple-touch-icon" href="/images/favicon.png">
+  <link rel="icon" href="{{ site.basedir }}/images/favicon.png">
+  <link rel="apple-touch-icon" href="{{ site.basedir }}/images/favicon.png">
 
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Ubuntu+Condensed:400&subset=latin">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/tomorrow-night.min.css">
-  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="{{ site.basedir }}/styles/main.css">
 
 </head>
 <body data-route="{{ route }}">
@@ -32,7 +32,7 @@
   <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/uikit.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/sticky.min.js"></script>
-  <script src="/scripts/main.js"></script>
+  <script src="/{{ site.basedir }}scripts/main.js"></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
