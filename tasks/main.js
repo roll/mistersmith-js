@@ -5,9 +5,9 @@ var stack = require('./loaders/stack')();
 
 
 // Build
-gulp.task('site:build', function(callback) {
+gulp.task('build', function(callback) {
     stack.runsequence(
-        'site:clean',
+        'clean',
         [
             'images:build',
             'pages:build',
@@ -19,21 +19,21 @@ gulp.task('site:build', function(callback) {
 });
 
 // Clean
-gulp.task('site:clean', function (callback) {
+gulp.task('clean', function (callback) {
     stack.del(['build/**'], callback);
 });
 
 // Deploy
-gulp.task('site:deploy', ['site:build'], function(callback) {
+gulp.task('deploy', ['build'], function(callback) {
     return gulp.src('build/**')
         .pipe(stack.ghpages())
 });
 
 // Serve
-gulp.task('site:serve', function(callback) {
+gulp.task('serve', function(callback) {
     stack.runsequence(
-        'site:build',
-        'site:watch',
+        'build',
+        'watch',
         function() {
             var data = require('./loaders/data')();
             stack.browsersync.init(data.stack.browsersync);
@@ -48,7 +48,7 @@ gulp.task('site:serve', function(callback) {
 });
 
 // Watch
-gulp.task('site:watch', [
+gulp.task('watch', [
     'data:watch',
     'images:watch',
     'layouts:watch',
