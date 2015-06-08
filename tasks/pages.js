@@ -1,48 +1,46 @@
 'use strict';
 var gulp = require('gulp');
-var error = require('./handlers/error');
-var stack = require('./loaders/stack')();
-var pages = require('./plugins/pages');
-var headings = require('./plugins/headings');
+var code = require('./bindings/code');
+var stack = code.loaders.stack();
 var watch = false;
 
 
 // Build
 gulp.task('pages:build', function() {
-    var data = require('./loaders/data')();
-    stack.nunjucks.configure('layouts', data.stack.nunjucks);
+    var data = code.loaders.data();
+    var env = stack.nunjucks.configure('layouts', data.stack.nunjucks);
+    env.addGlobal('lodash', stack.lodash);
+    env.addGlobal('moment', stack.moment);
     return gulp.src('pages/**')
         .pipe(stack.frontmatter()).on('data', function(file) {
-            stack.assign(file, file.frontMatter);
+            stack.lodash.assign(file, file.frontMatter);
             file.template = file.template || file.layout;
             file.scope = file.scope;
             delete file.frontMatter;
         })
         //Plumber doesn't work before frontmatter
-        .pipe(stack.if(watch, stack.plumber(error)))
+        .pipe(stack.if(watch, stack.plumber(code.handlers.error)))
         .pipe(stack.gulpsmith()
             .metadata(data)
             .use(stack.metallic())
             .use(stack.wordcount())
             .use(stack.markdown(data.stack.markdown))
-            .use(headings())
+            .use(code.plugins.headings())
             .use(stack.headings('h2,h3'))
             .use(stack.excerpts())
             .use(stack.permalinks({
                 pattern: ':permalink',
                 relative: false,
             }))
-            .use(pages())
+            .use(code.plugins.pages())
             .use(stack.templates({
-                engine: 'nunjucks',
                 inPlace: true,
-                moment: stack.moment,
+                engine: 'nunjucks',
             }))
             .use(stack.templates({
-                engine: 'nunjucks',
                 inPlace: false,
+                engine: 'nunjucks',
                 directory: 'layouts',
-                moment: stack.moment,
             }))
         )
         .pipe(gulp.dest('build'));

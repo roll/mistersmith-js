@@ -1,15 +1,15 @@
 'use strict';
 var gulp = require('gulp');
-var error = require('./handlers/error');
-var stack = require('./loaders/stack')();
+var code = require('./bindings/code');
+var stack = code.loaders.stack();
 var watch = false;
 
 
 // Build
 gulp.task('images:build', function() {
-    var data = require('./loaders/data')();
+    var data = code.loaders.data();
     return gulp.src('images/**')
-        .pipe(stack.if(watch, stack.plumber(error)))
+        .pipe(stack.if(watch, stack.plumber(code.handlers.error)))
         .pipe(stack.cache(stack.imagemin(data.stack.imagemin)))
         .pipe(gulp.dest('build/images'));
 });

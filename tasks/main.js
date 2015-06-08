@@ -1,7 +1,8 @@
 'use strict';
 var path = require('path');
 var gulp = require('gulp');
-var stack = require('./loaders/stack')();
+var code = require('./bindings/code');
+var stack = code.loaders.stack();
 
 
 // Build
@@ -35,7 +36,7 @@ gulp.task('serve', function(callback) {
         'build',
         'watch',
         function() {
-            var data = require('./loaders/data')();
+            var data = code.loaders.data();
             stack.browsersync.init(data.stack.browsersync);
             gulp.watch('build/**', function(file) {
                 var relpath = path.relative('build', file.path);

@@ -1,7 +1,7 @@
 'use strict';
 var gulp = require('gulp');
-var error = require('./handlers/error');
-var stack = require('./loaders/stack')();
+var code = require('./bindings/code');
+var stack = code.loaders.stack();
 var watch = false;
 
 
@@ -9,7 +9,7 @@ var watch = false;
 gulp.task('styles:build', function() {
     var data = require('./loaders/data')();
     return gulp.src('styles/**/*.scss')
-        .pipe(stack.if(watch, stack.plumber(error)))
+        .pipe(stack.if(watch, stack.plumber(code.handlers.error)))
         .pipe(stack.sourcemaps.init())
         .pipe(stack.sass(data.stack.sass))
         .pipe(stack.autoprefixer(data.stack.autoprefixer))

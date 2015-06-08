@@ -5,7 +5,7 @@ var loader = require('gulp-load-plugins');
 module.exports = function(options) {
     var stack =  loader({
         pattern: ['*'],
-        replaceString: /(^(gulp|lodash|metalsmith)(-|\.)|-|\.)/g,
+        replaceString: /(^(gulp|metalsmith)(-|\.)|-|\.)/g,
         camelize: false,
         rename: {},
     });
