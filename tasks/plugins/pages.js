@@ -4,7 +4,7 @@
 module.exports = function(options) {
   return function(files, metalsmith, done) {
     var data = metalsmith.metadata();
-    var pages = expand_pages(data.site.pages);
+    var pages = expand_pages(data.site.pages || []);
     data.site.pages = pages;
     metalsmith.metadata(data);
     update_files(files, pages);
