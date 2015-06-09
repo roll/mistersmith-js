@@ -9,8 +9,9 @@ var watch = false;
 gulp.task('pages:build', function() {
     var data = code.loaders.data();
     var env = stack.nunjucks.configure('layouts', data.stack.nunjucks);
-    env.addGlobal('lodash', stack.lodash);
-    env.addGlobal('moment', stack.moment);
+    Object.keys(code.globals).forEach(function(name) {
+        env.addGlobal(name, code.globals[name]);
+    });
     return gulp.src('pages/**')
         .pipe(stack.frontmatter()).on('data', function(file) {
             stack.lodash.assign(file, file.frontMatter);
