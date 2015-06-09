@@ -14,13 +14,14 @@ module.exports = function(options) {
         var scope = data;
         parts.forEach(function(part, index) {
             if (index < parts.length - 1) {
-                scope[part] = scope.part || {};
+                scope[part] = scope[part] || {};
                 scope = scope[part];
             } else {
                 var key = path.basename(part, '.yml');
                 scope[key] = yaml.load(fs.readFileSync(file));
             }
         });
+        console.log(data);
     });
     // TODO: implement data overriding instead of basedir hack
     var gutil = require('gulp-util');
