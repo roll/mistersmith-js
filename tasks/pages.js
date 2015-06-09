@@ -28,9 +28,11 @@ gulp.task('pages:build', function() {
             .use(code.plugins.headings())
             .use(stack.headings('h2,h3'))
             .use(stack.excerpts())
-            .use(stack.permalinks({
-                pattern: ':permalink',
+            .use(code.plugins.permalinks({
                 relative: false,
+                pattern: ':permalink',
+                replace: /^\/|\/$/,
+                separator: '-',
             }))
             .use(code.plugins.pages())
             .use(stack.templates({
