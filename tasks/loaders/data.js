@@ -21,7 +21,6 @@ module.exports = function(options) {
                 scope[key] = yaml.load(fs.readFileSync(file));
             }
         });
-        console.log(data);
     });
     // TODO: implement data overriding instead of basedir hack
     var gutil = require('gulp-util');
