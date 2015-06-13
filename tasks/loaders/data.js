@@ -17,8 +17,10 @@ module.exports = function(options) {
                 scope[part] = scope[part] || {};
                 scope = scope[part];
             } else {
-                var key = path.basename(part, '.yml');
-                scope[key] = yaml.load(fs.readFileSync(file));
+                var id = path.basename(part, '.yml');
+                var data = yaml.load(fs.readFileSync(file));
+                data.id = data.id || id;
+                scope[id] = data;
             }
         });
     });
