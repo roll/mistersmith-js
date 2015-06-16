@@ -1,3 +1,5 @@
+# General
+/.publish/
 /.sash-cache/
 /build/
 /node_modules/

@@ -1,4 +1,7 @@
+# General
 session_name: mistersmith
+
+# Windows
 windows:
   - window_name: bash
     panes:

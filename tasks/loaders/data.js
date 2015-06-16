@@ -24,11 +24,6 @@ module.exports = function(options) {
             }
         });
     });
-    // TODO: implement data overriding instead of basedir hack
-    var gutil = require('gulp-util');
-    if (gutil.env.basedir) {
-        data.site.basedir = gutil.env.basedir;
-    }
     if (options && options.key) {
         return data[options.key];
     }

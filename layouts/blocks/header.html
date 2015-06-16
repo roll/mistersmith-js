@@ -3,13 +3,13 @@
   <nav id="navbar" class="uk-navbar">
     <div class="uk-container uk-container-center">
 
-      <a class="uk-navbar-brand uk-hidden-small" href="{{ site.basedir }}/">Mr. Smith</a>
+      <a class="uk-navbar-brand uk-hidden-small" href="/">Mr. Smith</a>
 
       <ul class="uk-navbar-nav uk-hidden-small">
-        {% for page in site.pages %}
+        {% for page in pages %}
         {% if not page.pages %}
         <li {% if path == page.path %}class="uk-active"{% endif %}>
-          <a href="{{ site.basedir }}{{ page.path }}">{{ page.name }}</a>
+          <a href="{{ page.path }}">{{ page.name }}</a>
         </li>
         {% else %}
         <li {% if path == page.path %}class="uk-active"{% endif %} data-uk-dropdown="{mode: 'click'}">
@@ -18,7 +18,7 @@
             <ul class="uk-nav uk-nav-navbar">
               {% for page in page.pages %}
               <li {% if path == page.path %}class="uk-active"{% endif %}>
-                <a href="{{ site.basedir }}{{ page.path }}">{{ page.name }}</a>
+                <a href="{{ page.path }}">{{ page.name }}</a>
               </li>
               {% endfor %}
             </ul>
@@ -30,8 +30,8 @@
 
       <ul class="uk-navbar-nav uk-navbar-flip uk-hidden-small">
         <li><a href=""><span class="uk-icon-search"></span> Search</a></li>
-        <li {% if not prev %}class="disabled"{% endif %}><a href="{{ site.basedir }}{{ prev }}"><span class="uk-icon-arrow-left"></span> Prev</a></li>
-        <li {% if not next %}class="disabled"{% endif %}><a href="{{ site.basedir }}{{ next }}">Next <span class="uk-icon-arrow-right"></span></a></li>
+        <li {% if not prev %}class="disabled"{% endif %}><a href="{{ prev }}"><span class="uk-icon-arrow-left"></span> Prev</a></li>
+        <li {% if not next %}class="disabled"{% endif %}><a href="{{ next }}">Next <span class="uk-icon-arrow-right"></span></a></li>
         <li><a href="//github.com/{{ site.github_id }}"><span class="uk-icon-github"></span> Github</a></li>
       </ul>
 

@@ -4,13 +4,3 @@ description: Mr. Smith
 keywords: mr. smith
 github_id: roll/mistersmith
 google_analytics_id: UA-XXXXX-X
-basedir:
-
-# Pages
-pages:
-  - Home: /
-  - Docs:
-    - Introduction: /docs/
-    - Docker: /docs/docker/
-    - Nodejs: /docs/nodejs/
-  - Blog: /blog/

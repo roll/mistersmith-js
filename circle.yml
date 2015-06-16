@@ -1,0 +1,11 @@
+# Test
+test:
+  override:
+    - npm run gulp build
+
+# Deploy
+deployment:
+  deploy:
+    branch: master
+    commands:
+      - npm run gulp deploy#amazon

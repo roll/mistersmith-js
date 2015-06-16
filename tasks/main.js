@@ -13,8 +13,7 @@ gulp.task('default', function(callback) {
 // Build
 gulp.task('build', function(callback) {
     stack.runsequence(
-        'clean',
-        [
+        'clean', [
             'images:build',
             'pages:build',
             'scripts:build',
@@ -29,10 +28,27 @@ gulp.task('clean', function (callback) {
     stack.del(['build/**'], callback);
 });
 
-// Deploy
-gulp.task('deploy', function(callback) {
+// Deploy (guthub)
+gulp.task('deploy#github', function() {
+    var data = code.loaders.data();
+    var filter = stack.filter('**/*.html')
     return gulp.src('build/**')
+        .pipe(filter)
+        .pipe(stack.replace(
+            /="\/(?=[^\/])/g,
+            '="'+data.stack.ghpages.basedir+'/'))
+        .pipe(filter.restore())
         .pipe(stack.ghpages())
+});
+
+// Deploy (amazon)
+gulp.task('deploy#amazon', function() {
+    var data = code.loaders.data();
+    var publisher = stack.awspublish.create(data.stack.awspublish);
+    return gulp.src('build/**')
+        .pipe(publisher.publish())
+        .pipe(publisher.sync())
+        .pipe(stack.awspublish.reporter())
 });
 
 // Serve

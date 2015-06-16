@@ -1,3 +1,9 @@
+# Awspublish
+awspublish:
+  region: region
+  params:
+    Bucket: bucket
+
 # Autoprefixer
 autoprefixer:
   browsers:
@@ -14,6 +20,10 @@ browsersync:
 # Coffee
 coffee:
   bare: true
+
+# Ghpages
+ghpages:
+  basedir: /mistersmith
 
 # Imagemin
 imagemin:
