@@ -87,11 +87,11 @@
 
   <div class="uk-grid">
     <div class="uk-width-medium-2-10"></div>
-    <div class="uk-width-medium-8-10"><h1 id="dockerizing-a-node-js-web-app">Dockerizing a Node.js web app <a class="heading-anchor" href="#dockerizing-a-node-js-web-app"><span class="uk-icon-link"></span></a></h1>
+    <div class="uk-width-medium-8-10"><h1 id="dockerizing-a-node-js-web-app">Dockerizing a Node.js web app</h1>
 <blockquote>
 <p><strong>Note</strong>:</p>
 <ul>
-<li><strong>If you don&apos;t like sudo</strong> then see <a href="/installation/binaries/#giving-non-root-access"><em>Giving non-root
+<li><strong>If you don&#39;t like sudo</strong> then see <a href="/mistersmith/installation/binaries/#giving-non-root-access"><em>Giving non-root
 access</em></a></li>
 </ul>
 </blockquote>
@@ -100,63 +100,63 @@ Docker images from a parent image using a <code>Dockerfile</code>
 . We will do that by making a simple Node.js hello world web
 application running on CentOS. You can get the full source code at
 <a href="https://github.com/enokd/docker-node-hello/">https://github.com/enokd/docker-node-hello/</a>.</p>
-<h2 id="create-node-js-app">Create Node.js app <a class="heading-anchor" href="#create-node-js-app"><span class="uk-icon-link"></span></a></h2>
+<h2 id="create-node-js-app">Create Node.js app</h2>
 <p>First, create a directory <code>src</code> where all the files
 would live. Then create a <code>package.json</code> file that
 describes your app and its dependencies:</p>
 <pre><code class="hljs json">{
-  &quot;<span class="hljs-attribute">name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;docker-centos-hello&quot;</span></span>,
-  &quot;<span class="hljs-attribute">private</span>&quot;: <span class="hljs-value"><span class="hljs-literal">true</span></span>,
-  &quot;<span class="hljs-attribute">version</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;0.0.1&quot;</span></span>,
-  &quot;<span class="hljs-attribute">description</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Node.js Hello world app on CentOS using docker&quot;</span></span>,
-  &quot;<span class="hljs-attribute">author</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Daniel Gasienica &lt;daniel@gasienica.ch&gt;&quot;</span></span>,
-  &quot;<span class="hljs-attribute">dependencies</span>&quot;: <span class="hljs-value">{
-    &quot;<span class="hljs-attribute">express</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;3.2.4&quot;</span>
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"docker-centos-hello"</span></span>,
+  "<span class="hljs-attribute">private</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-string">"0.0.1"</span></span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Node.js Hello world app on CentOS using docker"</span></span>,
+  "<span class="hljs-attribute">author</span>": <span class="hljs-value"><span class="hljs-string">"Daniel Gasienica &lt;daniel@gasienica.ch&gt;"</span></span>,
+  "<span class="hljs-attribute">dependencies</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">express</span>": <span class="hljs-value"><span class="hljs-string">"3.2.4"</span>
   </span>}
 </span>}</code></pre>
 
 <p>Then, create an <code>index.js</code> file that defines a web
 app using the <a href="http://expressjs.com/">Express.js</a> framework:</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;express&apos;</span>);
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
 
 <span class="hljs-comment">// Constants</span>
 <span class="hljs-keyword">var</span> PORT = <span class="hljs-number">8080</span>;
 
 <span class="hljs-comment">// App</span>
 <span class="hljs-keyword">var</span> app = express();
-app.get(<span class="hljs-string">&apos;/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(req, res)</span> </span>{
-  res.send(<span class="hljs-string">&apos;Hello world\n&apos;</span>);
+app.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(req, res)</span> </span>{
+  res.send(<span class="hljs-string">'Hello world\n'</span>);
 });
 
 app.listen(PORT);
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Running on http://localhost:&apos;</span> + PORT);</code></pre>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Running on http://localhost:'</span> + PORT);</code></pre>
 
-<p>In the next steps, we&apos;ll look at how you can run this app inside a
-CentOS container using Docker. First, you&apos;ll need to build a Docker
+<p>In the next steps, we&#39;ll look at how you can run this app inside a
+CentOS container using Docker. First, you&#39;ll need to build a Docker
 image of your app.</p>
-<h2 id="creating-a-dockerfile">Creating a Dockerfile <a class="heading-anchor" href="#creating-a-dockerfile"><span class="uk-icon-link"></span></a></h2>
+<h2 id="creating-a-dockerfile">Creating a Dockerfile</h2>
 <p>Create an empty file called <code>Dockerfile</code>:</p>
 <pre><code class="hljs bash">touch Dockerfile</code></pre>
 
 <p>Open the <code>Dockerfile</code> in your favorite text editor</p>
 <p>Define the parent image you want to use to build your own image on
-top of. Here, we&apos;ll use
+top of. Here, we&#39;ll use
 <a href="https://registry.hub.docker.com/_/centos/">CentOS</a> (tag: <code>centos6</code>)
 available on the <a href="https://hub.docker.com/">Docker Hub</a>:</p>
 <pre><code class="hljs"><span class="hljs-tag">FROM</span>    <span class="hljs-tag">centos</span><span class="hljs-pseudo">:centos6</span></code></pre>
 
-<p>Since we&apos;re building a Node.js app, you&apos;ll have to install Node.js as
+<p>Since we&#39;re building a Node.js app, you&#39;ll have to install Node.js as
 well as npm on your CentOS image. Node.js is required to run your app
-and npm to install your app&apos;s dependencies defined in
+and npm to install your app&#39;s dependencies defined in
 <code>package.json</code>. To install the right package for
-CentOS, we&apos;ll use the instructions from the <a href="https://github.com/joyent/node/wiki/Installing-Node.js-
+CentOS, we&#39;ll use the instructions from the <a href="https://github.com/joyent/node/wiki/Installing-Node.js-
 via-package-manager#rhelcentosscientific-linux-6">Node.js wiki</a>:</p>
 <pre><code class="hljs"><span class="hljs-preprocessor"># Enable EPEL for Node.js</span>
 RUN     rpm -Uvh http:<span class="hljs-comment">//download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm</span>
 <span class="hljs-preprocessor"># Install Node.js and npm</span>
 RUN     yum install -y npm</code></pre>
 
-<p>To bundle your app&apos;s source code inside the Docker image, use the <code>COPY</code>
+<p>To bundle your app&#39;s source code inside the Docker image, use the <code>COPY</code>
 instruction:</p>
 <pre><code class="hljs"># Bundle app <span class="hljs-keyword">source</span>
 <span class="hljs-keyword">COPY</span> . <span class="hljs-regexp">/src</span></code></pre>
@@ -165,14 +165,14 @@ instruction:</p>
 <pre><code class="hljs"><span class="hljs-comment"># Install app dependencies</span>
 <span class="hljs-title">RUN</span> cd /src; <span class="hljs-title">npm</span> install</code></pre>
 
-<p>Your app binds to port <code>8080</code> so you&apos;ll use the<code>EXPOSE</code> instruction to have
+<p>Your app binds to port <code>8080</code> so you&#39;ll use the<code>EXPOSE</code> instruction to have
 it mapped by the <code>docker</code> daemon:</p>
 <pre><code class="hljs"><span class="hljs-title">EXPOSE</span>  <span class="hljs-number">8080</span></code></pre>
 
 <p>Last but not least, define the command to run your app using <code>CMD</code> which
 defines your runtime, i.e. <code>node</code>, and the path to our app, i.e. <code>src/index.js</code>
 (see the step where we added the source to the container):</p>
-<pre><code class="hljs"><span class="hljs-title">CMD</span> [<span class="hljs-string">&quot;node&quot;</span>, <span class="hljs-string">&quot;/src/index.js&quot;</span>]</code></pre>
+<pre><code class="hljs"><span class="hljs-title">CMD</span> [<span class="hljs-string">"node"</span>, <span class="hljs-string">"/src/index.js"</span>]</code></pre>
 
 <p>Your <code>Dockerfile</code> should now look like this:</p>
 <pre><code class="hljs">FROM    centos:centos6
@@ -188,11 +188,11 @@ COPY . /src
 RUN cd /src; npm install
 
 EXPOSE  <span class="hljs-number">8080</span>
-CMD [<span class="hljs-string">&quot;node&quot;</span>, <span class="hljs-string">&quot;/src/index.js&quot;</span>]</code></pre>
+CMD [<span class="hljs-string">"node"</span>, <span class="hljs-string">"/src/index.js"</span>]</code></pre>
 
-<h2 id="building-your-image">Building your image <a class="heading-anchor" href="#building-your-image"><span class="uk-icon-link"></span></a></h2>
+<h2 id="building-your-image">Building your image</h2>
 <p>Go to the directory that has your <code>Dockerfile</code> and run the following command
-to build a Docker image. The <code>-t</code> flag lets you tag your image so it&apos;s easier
+to build a Docker image. The <code>-t</code> flag lets you tag your image so it&#39;s easier
 to find later using the <code>docker images</code> command:</p>
 <pre><code class="hljs"><span class="hljs-prompt">$ docker build -t &lt;your username&gt;</span>/centos-node-hello .</code></pre>
 
@@ -204,7 +204,7 @@ to find later using the <code>docker images</code> command:</p>
 centos                              centos6    <span class="hljs-number">539</span>c0211cd76    <span class="hljs-number">8</span> weeks ago
 <span class="hljs-prompt">&lt;your username&gt;</span>/centos-node-hello   latest     d64d3505b0d2    <span class="hljs-number">2</span> hours ago</code></pre>
 
-<h2 id="run-the-image">Run the image <a class="heading-anchor" href="#run-the-image"><span class="uk-icon-link"></span></a></h2>
+<h2 id="run-the-image">Run the image</h2>
 <p>Running your image with <code>-d</code> runs the container in detached mode, leaving the
 container running in the background. The <code>-p</code> flag redirects a public port to
 a private port in the container. Run the image you previously built:</p>
@@ -220,7 +220,7 @@ $ docker logs &lt;container id&gt;
 <span class="hljs-preprocessor"># Example</span>
 Running on http:<span class="hljs-comment">//localhost:8080</span></code></pre>
 
-<h2 id="test">Test <a class="heading-anchor" href="#test"><span class="uk-icon-link"></span></a></h2>
+<h2 id="test">Test</h2>
 <p>To test your app, get the port of your app that Docker mapped:</p>
 <pre><code class="hljs">$ docker ps
 
@@ -281,8 +281,9 @@ CentOS on Docker. You can get the full source code at
   <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/uikit.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/sticky.min.js"></script>
-  <script src="//mistersmithscripts/main.js"></script>
+  <script src="/mistersmith/scripts/main.js"></script>
 
+  <!-- Google Analytics -->
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
