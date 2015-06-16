@@ -1,11 +1,3 @@
 'use strict';
-var gulp = require('gulp');
-
-
-// Register
+// Register tasks
 require('require-dir')('./tasks');
-
-// Default
-gulp.task('default', [
-    'serve',
-]);

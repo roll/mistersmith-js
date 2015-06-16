@@ -5,6 +5,11 @@ var code = require('./bindings/code');
 var stack = code.loaders.stack();
 
 
+// Default
+gulp.task('default', function(callback) {
+    stack.runsequence('build', 'serve', callback);
+});
+
 // Build
 gulp.task('build', function(callback) {
     stack.runsequence(
@@ -25,27 +30,21 @@ gulp.task('clean', function (callback) {
 });
 
 // Deploy
-gulp.task('deploy', ['build'], function(callback) {
+gulp.task('deploy', function(callback) {
     return gulp.src('build/**')
         .pipe(stack.ghpages())
 });
 
 // Serve
-gulp.task('serve', function(callback) {
-    stack.runsequence(
-        'build',
-        'watch',
-        function() {
-            var data = code.loaders.data();
-            stack.browsersync.init(data.stack.browsersync);
-            gulp.watch('build/**', function(file) {
-                var relpath = path.relative('build', file.path);
-                if (path.extname(relpath) == '.map') return;
-                stack.browsersync.reload(relpath);
-            });
-            callback();
-        }
-    );
+gulp.task('serve', ['watch'], function(callback) {
+    var data = code.loaders.data();
+    stack.browsersync.init(data.stack.browsersync);
+    gulp.watch('build/**', function(file) {
+        var relpath = path.relative('build', file.path);
+        if (path.extname(relpath) == '.map') return;
+        stack.browsersync.reload(relpath);
+    });
+    callback();
 });
 
 // Watch
