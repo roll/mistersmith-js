@@ -32,11 +32,10 @@ gulp.task('clean', function (callback) {
 gulp.task('deploy#github', function() {
     var data = code.loaders.data();
     var filter = stack.filter('**/*.html')
+    var basedir = data.stack.ghpages.basedir
     return gulp.src('build/**')
         .pipe(filter)
-        .pipe(stack.replace(
-            /="\/(?=[^\/])/g,
-            '="'+data.stack.ghpages.basedir+'/'))
+        .pipe(stack.replace(/="\/(?=[^\/])/g, '="'+basedir+'/'))
         .pipe(filter.restore())
         .pipe(stack.ghpages())
 });
