@@ -8,10 +8,13 @@ var watch = false;
 // Build
 gulp.task('scripts:build', function() {
     var data = require('./loaders/data')();
-    return gulp.src('scripts/**/*.coffee')
+    var filter = stack.filter('**/*.coffee')
+    return gulp.src('scripts/**/*.{js,coffee}')
         .pipe(stack.if(watch, stack.plumber(code.handlers.error)))
         .pipe(stack.sourcemaps.init())
+        .pipe(filter)
         .pipe(stack.coffee(data.stack.coffee))
+        .pipe(filter.restore())
         .pipe(stack.concat('main.js'))
         .pipe(stack.uglify())
         .pipe(stack.sourcemaps.write('maps'))
@@ -20,6 +23,6 @@ gulp.task('scripts:build', function() {
 
 // Watch
 gulp.task('scripts:watch', function() {
-    gulp.watch('scripts/**/*.coffee', ['scripts:build']);
+    gulp.watch('scripts/**/*.{js,coffee}', ['scripts:build']);
     watch = true;
 });
