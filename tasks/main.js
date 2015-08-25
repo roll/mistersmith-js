@@ -1,8 +1,8 @@
 'use strict';
 var path = require('path');
 var gulp = require('gulp');
-var code = require('./bindings/code');
-var stack = code.loaders.stack();
+var stack = gulp.meta.loaders.stack();
+var config = gulp.meta.loaders.config();
 
 
 // Default
@@ -30,9 +30,8 @@ gulp.task('clean', function (callback) {
 
 // Deploy (guthub)
 gulp.task('deploy-github', function() {
-    var data = code.loaders.data();
     var filter = stack.filter('**/*.html')
-    var basedir = data.stack.ghpages.basedir
+    var basedir = config.ghpages.basedir
     return gulp.src('build/**')
         .pipe(filter)
         .pipe(stack.replace(/="\/(?=[^\/])/g, '="'+basedir+'/'))
@@ -42,8 +41,7 @@ gulp.task('deploy-github', function() {
 
 // Deploy (amazon)
 gulp.task('deploy-amazon', function() {
-    var data = code.loaders.data();
-    var publisher = stack.awspublish.create(data.stack.awspublish);
+    var publisher = stack.awspublish.create(config.awspublish);
     return gulp.src('build/**')
         .pipe(publisher.publish())
         .pipe(publisher.sync())
@@ -52,8 +50,7 @@ gulp.task('deploy-amazon', function() {
 
 // Serve
 gulp.task('serve', ['watch'], function(callback) {
-    var data = code.loaders.data();
-    stack.browsersync.init(data.stack.browsersync);
+    stack.browsersync.init(config.browsersync);
     gulp.watch('build/**', function(file) {
         var relpath = path.relative('build', file.path);
         if (path.extname(relpath) == '.map') return;

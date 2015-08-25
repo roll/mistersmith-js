@@ -1,16 +1,16 @@
 'use strict';
 var gulp = require('gulp');
-var code = require('./bindings/code');
-var stack = code.loaders.stack();
+var stack = gulp.meta.loaders.stack();
+var config = gulp.meta.loaders.config();
 var watch = false;
 
 
 // Build
 gulp.task('pages:build', function() {
-    var data = code.loaders.data();
-    var env = stack.nunjucks.configure('layouts', data.stack.nunjucks);
-    Object.keys(code.globals).forEach(function(name) {
-        env.addGlobal(name, code.globals[name]);
+    var data = gulp.meta.loaders.data();
+    var env = stack.nunjucks.configure('layouts', config.nunjucks);
+    Object.keys(gulp.meta.globals).forEach(function(name) {
+        env.addGlobal(name, gulp.meta.globals[name]);
     });
     return gulp.src('pages/**')
         .pipe(stack.frontmatter()).on('data', function(file) {
@@ -20,22 +20,22 @@ gulp.task('pages:build', function() {
             delete file.frontMatter;
         })
         //Plumber doesn't work before frontmatter
-        .pipe(stack.if(watch, stack.plumber(code.handlers.error)))
+        .pipe(stack.if(watch, stack.plumber(gulp.meta.handlers.error)))
         .pipe(stack.gulpsmith()
             .metadata(data)
             .use(stack.metallic())
             .use(stack.wordcount())
-            .use(stack.markdown(data.stack.markdown))
-            // .use(code.plugins.headings())
+            .use(stack.markdown(config.markdown))
+            // .use(gulp.meta.plugins.headings())
             .use(stack.headings('h2,h3'))
             .use(stack.excerpts())
-            .use(code.plugins.permalinks({
+            .use(gulp.meta.plugins.permalinks({
                 relative: false,
                 pattern: ':permalink',
                 replace: /^\/|\/$/,
                 separator: '-',
             }))
-            .use(code.plugins.pages())
+            .use(gulp.meta.plugins.pages())
             .use(stack.templates({
                 inPlace: true,
                 engine: 'nunjucks',
