@@ -29,7 +29,7 @@ gulp.task('clean', function (callback) {
 });
 
 // Deploy (guthub)
-gulp.task('deploy#github', function() {
+gulp.task('deploy-github', function() {
     var data = code.loaders.data();
     var filter = stack.filter('**/*.html')
     var basedir = data.stack.ghpages.basedir
@@ -41,7 +41,7 @@ gulp.task('deploy#github', function() {
 });
 
 // Deploy (amazon)
-gulp.task('deploy#amazon', function() {
+gulp.task('deploy-amazon', function() {
     var data = code.loaders.data();
     var publisher = stack.awspublish.create(data.stack.awspublish);
     return gulp.src('build/**')

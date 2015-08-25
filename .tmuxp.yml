@@ -9,6 +9,6 @@ windows:
   - window_name: vim
     panes:
       - vim
-  - window_name: misc
+  - window_name: proc
     panes:
       - gulp
