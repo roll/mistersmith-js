@@ -8,4 +8,4 @@ deployment:
   deploy:
     branch: master
     commands:
-      - npm run gulp deploy#amazon
+      - npm run gulp deploy-amazon
