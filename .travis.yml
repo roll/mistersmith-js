@@ -1,0 +1,15 @@
+# Language
+language:
+  nodejs
+
+# Install
+install:
+  - npm install
+
+# Script
+script:
+  - npm run gulp build
+
+# Deploy
+after_success:
+  - npm run gulp deploy-github
