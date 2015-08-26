@@ -3,10 +3,10 @@
 
 module.exports = function(options) {
   return function(files, metalsmith, done) {
-    var data = metalsmith.metadata();
-    var pages = expand_pages(data.pages || []);
-    data.pages = pages;
-    metalsmith.metadata(data);
+    var metadata = metalsmith.metadata();
+    var pages = expand_pages(metadata.data.pages || []);
+    metadata.pages = pages;
+    metalsmith.metadata(metadata);
     update_files(files, pages);
     done();
   };

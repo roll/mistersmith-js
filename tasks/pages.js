@@ -13,13 +13,16 @@ gulp.task('pages:build', function() {
         .pipe(stack.frontmatter()).on('data', function(file) {
             stack.lodash.assign(file, file.frontMatter);
             file.template = file.template || file.layout;
-            file.scope = file.scope;
             delete file.frontMatter;
         })
         //Plumber doesn't work before frontmatter
         .pipe(stack.if(watch, stack.plumber(gulp.meta.handlers.error)))
         .pipe(stack.gulpsmith()
-            .metadata(data)
+            .metadata({
+                data: data,
+                stack: stack,
+                config: config,
+            })
             .use(stack.metallic())
             .use(stack.wordcount())
             .use(stack.markdown(config.markdown))
