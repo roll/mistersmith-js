@@ -28,17 +28,6 @@ gulp.task('clean', function (callback) {
     stack.del(['build/**'], callback);
 });
 
-// Deploy guthub
-gulp.task('deploy-github', function() {
-    var filter = stack.filter('**/*.html')
-    var basedir = config.ghpages.basedir
-    return gulp.src('build/**')
-        .pipe(filter)
-        .pipe(stack.replace(/="\/(?=[^\/])/g, '="'+basedir+'/'))
-        .pipe(filter.restore())
-        .pipe(stack.ghpages());
-});
-
 // Deploy amazon
 gulp.task('deploy-amazon', function() {
     var publisher = stack.awspublish.create(config.awspublish);
@@ -46,6 +35,17 @@ gulp.task('deploy-amazon', function() {
         .pipe(publisher.publish())
         .pipe(publisher.sync())
         .pipe(stack.awspublish.reporter());
+});
+
+// Deploy github
+gulp.task('deploy-github', function() {
+    var filter = stack.filter('**/*.html')
+    var basedir = config.ghpages.basedir
+    return gulp.src('build/**')
+        .pipe(filter)
+        .pipe(stack.if(basedir, stack.replace(/="\/(?=[^\/])/g, '="'+basedir+'/')))
+        .pipe(filter.restore())
+        .pipe(stack.ghpages());
 });
 
 // Serve
