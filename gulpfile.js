@@ -11,8 +11,6 @@ var loader = require('gulp-load-plugins');
 
 // Register meta
 gulp.meta = {
-    globals: reqdir('tasks/globals'),
-    plugins: reqdir('tasks/plugins'),
     loaders: {
         config: function(options) {
             var config = yaml.load(fs.readFileSync('config.yml'));
@@ -65,6 +63,7 @@ gulp.meta = {
             this.emit('end');
         },
     },
+    plugins: reqdir('tasks/plugins'),
 };
 
 // Register tasks
