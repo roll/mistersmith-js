@@ -1,0 +1,9 @@
+---
+permalink: false
+---
+User-Agent: *
+Disallow: /*openstat=
+Disallow: /*gclid=
+Disallow: /*utm_*=
+Disallow: /?
+Allow: /
