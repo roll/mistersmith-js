@@ -28,7 +28,7 @@ gulp.task('clean', function (callback) {
     stack.del(['build/**'], callback);
 });
 
-// Deploy (guthub)
+// Deploy guthub
 gulp.task('deploy-github', function() {
     var filter = stack.filter('**/*.html')
     var basedir = config.ghpages.basedir
@@ -36,16 +36,16 @@ gulp.task('deploy-github', function() {
         .pipe(filter)
         .pipe(stack.replace(/="\/(?=[^\/])/g, '="'+basedir+'/'))
         .pipe(filter.restore())
-        .pipe(stack.ghpages())
+        .pipe(stack.ghpages());
 });
 
-// Deploy (amazon)
+// Deploy amazon
 gulp.task('deploy-amazon', function() {
     var publisher = stack.awspublish.create(config.awspublish);
     return gulp.src('build/**')
         .pipe(publisher.publish())
         .pipe(publisher.sync())
-        .pipe(stack.awspublish.reporter())
+        .pipe(stack.awspublish.reporter());
 });
 
 // Serve
@@ -60,16 +60,15 @@ gulp.task('serve', ['watch'], function(callback) {
 });
 
 // Validate
-gulp.task('validate', function(callback) {
-    return gulp.src('build/*.html')
-        .pipe(stack.w3cjs());
-});
+gulp.task('validate', [
+    'pages:validate',
+    'scripts:validate',
+    'styles:validate',
+]);
 
 // Watch
 gulp.task('watch', [
-    'data:watch',
     'images:watch',
-    'layouts:watch',
     'pages:watch',
     'scripts:watch',
     'styles:watch',

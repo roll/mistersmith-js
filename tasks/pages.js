@@ -48,8 +48,14 @@ gulp.task('pages:build', function() {
         .pipe(gulp.dest('build'));
 });
 
+// Validate
+gulp.task('pages:validate', function() {
+    return gulp.src('build/**/*.css')
+        .pipe(stack.w3cjs());
+});
+
 // Watch
 gulp.task('pages:watch', function() {
-    gulp.watch('pages/**', ['pages:build']);
+    gulp.watch(['data/**', 'layouts/**', 'pages/**'], ['pages:build']);
     watch = true;
 });

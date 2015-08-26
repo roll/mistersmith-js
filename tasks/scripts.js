@@ -21,6 +21,13 @@ gulp.task('scripts:build', function() {
         .pipe(gulp.dest('build/scripts'));
 });
 
+// Validate
+gulp.task('scripts:validate', function() {
+    return gulp.src('build/**/*.js')
+        .pipe(stack.jshint())
+        .pipe(stack.jshint.reporter('default'));
+});
+
 // Watch
 gulp.task('scripts:watch', function() {
     gulp.watch('scripts/**/*.{js,coffee}', ['scripts:build']);

@@ -18,6 +18,13 @@ gulp.task('styles:build', function() {
         .pipe(gulp.dest('build/styles'))
 });
 
+// Validate
+gulp.task('styles:validate', function() {
+    //TODO: enable reporting
+    return gulp.src('build/**/*.css')
+        .pipe(stack.w3ccss());
+});
+
 // Watch
 gulp.task('styles:watch', function() {
     gulp.watch('styles/**/*.scss', ['styles:build']);
