@@ -13,7 +13,7 @@
         </li>
         {% else %}
         <li {% if path == page.path %}class="uk-active"{% endif %} data-uk-dropdown="{mode: 'click'}">
-          <a>{{ page.name }} <span class="uk-icon-caret-down"></span></a>
+          <a>{{ page.name }} <span class="fa fa-caret-down"></span></a>
           <div class="uk-dropdown ul-dropdown-navbar">
             <ul class="uk-nav uk-nav-navbar">
               {% for page in page.pages %}
@@ -29,10 +29,10 @@
       </ul>
 
       <ul class="uk-navbar-nav uk-navbar-flip uk-hidden-small">
-        <li><a href=""><span class="uk-icon-search"></span> Search</a></li>
-        <li {% if not prev %}class="disabled"{% endif %}><a href="{{ prev }}"><span class="uk-icon-arrow-left"></span> Prev</a></li>
-        <li {% if not next %}class="disabled"{% endif %}><a href="{{ next }}">Next <span class="uk-icon-arrow-right"></span></a></li>
-        <li><a href="//github.com/{{ site.github_id }}"><span class="uk-icon-github"></span> Github</a></li>
+        <li><a href=""><span class="fa fa-search"></span> Search</a></li>
+        <li {% if not prev %}class="disabled"{% endif %}><a href="{{ prev }}"><span class="fa fa-arrow-left"></span> Prev</a></li>
+        <li {% if not next %}class="disabled"{% endif %}><a href="{{ next }}">Next <span class="fa fa-arrow-right"></span></a></li>
+        <li><a href="//github.com/{{ site.github_id }}"><span class="fa fa-github"></span> Github</a></li>
       </ul>
 
       <a href="#menu" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
