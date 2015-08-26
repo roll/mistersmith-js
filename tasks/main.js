@@ -59,6 +59,12 @@ gulp.task('serve', ['watch'], function(callback) {
     callback();
 });
 
+// Validate
+gulp.task('validate', function(callback) {
+    return gulp.src('build/*.html')
+        .pipe(stack.w3cjs());
+});
+
 // Watch
 gulp.task('watch', [
     'data:watch',
