@@ -26,10 +26,9 @@ gulp.task('pages:build', function() {
             .use(stack.metallic())
             .use(stack.wordcount())
             .use(stack.markdown(config.markdown))
-            // .use(gulp.meta.plugins.headings())
             .use(stack.headings('h2,h3'))
             .use(stack.excerpts())
-            .use(gulp.meta.plugins.permalinks({
+            .use(gulp.meta.plugins.links({
                 relative: false,
                 pattern: ':permalink',
                 replace: /^\/|\/$/,
