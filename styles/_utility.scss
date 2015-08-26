@@ -1,0 +1,28 @@
+.ut-border {
+  border: solid 1px darken($grey-color, 20%);
+}
+
+.ut-border-bottom {
+  border-bottom: dotted 1px $grey-color;
+}
+
+.uk-text-bold {
+  font-family: $base-heading-font-family;
+  font-style: normal;
+  color: #222;
+}
+
+.uk-close {
+  border-color: $alpha-color !important;
+}
+
+a[data-uk-lightbox] {
+  cursor: zoom-in;
+}
+
+@media print {
+  .ut-hidden-print {
+    display: none !important;
+  }
+}
+

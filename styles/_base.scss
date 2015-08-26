@@ -1,13 +1,96 @@
 html {
-  font-size: $rem-value;
+  font-size: 14px;
+  @media print {
+    font-size: 14px;
+  }
+  @media (min-width: $breakpoint-medium) {
+    font-size: 1.4vw;
+  }
+  @media (min-width: ($breakpoint-medium+$breakpoint-large)/2) {
+    font-size: 1.3vw;
+  }
+  @media (min-width: $breakpoint-large) {
+    font-size: 1.2vw;
+  }
+  @media (min-width: ($breakpoint-large+$breakpoint-xlarge)/2) {
+    font-size: 1.1vw;
+  }
+  @media (min-width: $breakpoint-xlarge) {
+    font-size: 1.0vw;
+  }
 }
 
-.heading-anchor {
-  opacity: 0.25;
-  font-size: 0.75em;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-.container-fluid {
-  max-width: none;
+h1, h2, h3, h4, h5, h6 {
+  margin: 1rem 0;
+  color: #000;
+  a {
+    color: #000;
+    &:hover {
+      color: #000;
+    }
+  }
 }
 
+h1 {
+  margin-top: 1.3rem;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+ul {
+  list-style-position: inside;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: $text-small-font-size;
+  th, td {
+    border: solid 1px lighten($second-color, 10%);
+  }
+  th {
+    background-color: lighten($second-color, 35%);
+    font-family: $base-heading-font-family;
+    color: #000;
+  }
+  td {
+    font-size: 0.9em;
+  }
+}
+
+dl {
+  dt {
+    font-family: $base-heading-font-family;
+    font-weight: 700 !important;
+    color: #222 !important;
+  }
+  dd {
+    color: #444 !important;
+  }
+}
+
+blockquote {
+  font-size: $text-large-font-size;
+}
+
+a {
+  border-bottom: solid 1px $alpha-color;
+  &:hover {
+    border-bottom: solid 1px currentColor;
+    text-decoration: none !important;
+  }
+  &[data-uk-lightbox] {
+    border-color: $alpha-color !important;
+  }
+  &.uk-slidenav {
+    border-color: $alpha-color !important;
+  }
+}

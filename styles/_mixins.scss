@@ -1,0 +1,11 @@
+@mixin box-shadow {
+  box-shadow: 0.1rem 0.1rem 0.2rem rgba($grey-color, 0.25);
+}
+
+@mixin box-shadow--contrast {
+  box-shadow: 0 0 0.5rem #fff;
+}
+
+@mixin text-shadow {
+  text-shadow: 1px 1px 0.1rem $base-body-color;
+}

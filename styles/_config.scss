@@ -1,85 +1,52 @@
-// Main variables
-$rem-value: 20px;
-
-// Uikit (article)
-$article-margin-top:                             (25rem/14) !default;
-
-$article-title-font-size:                        (36rem/14) !default;
-$article-title-line-height:                      (42rem/14) !default;
-$article-title-font-weight:                      normal !default;
-$article-title-text-transform:                   none !default;
-
-$article-meta-font-size:                         (12rem/14) !default;
-$article-meta-line-height:                       (18rem/14) !default;
-$article-meta-color:                             #999 !default;
-
-$article-lead-color:                             #444 !default;
-$article-lead-font-size:                         (18rem/14) !default;
-$article-lead-line-height:                       (24rem/14) !default;
-$article-lead-font-weight:                       normal !default;
-
-$article-divider-margin:                         (25rem/14) !default;
-$article-divider-border:                         #ddd !default;
-
-// Uikit (badge)
-$badge-background:                               #00a8e6 !default;
-$badge-padding-horizontal:                       (5rem/14) !default;
-$badge-font-size:                                (10rem/14) !default;
-$badge-font-weight:                              bold !default;
-$badge-line-height:                              (14rem/14) !default;
-$badge-color:                                    #fff !default;
-$badge-text-transform:                           none !default;
-$badge-hover-color:                              #fff !default;
-
-$badge-notification-font-size:                   (12rem/14) !default;
-$badge-notification-line-height:                 (18rem/14) !default;
-
-$badge-success-background:                       #8cc14c !default;
-$badge-warning-background:                       #faa732 !default;
-$badge-danger-background:                        #da314b !default;
+// General
+$first-color: #0096e5;
+$second-color: #52b72a;
+$third-color: #29a2b5;
+$grey-color: #777;
+$alpha-color: rgba(#fff, 0);
 
 // Uikit (base)
 $base-body-background:                           #fff !default;
-$base-body-font-family:                          "Open Sans", Arial, sans-serif !default;
-$base-body-font-weight:                          300 !default;
-$base-body-font-size:                            1rem !default;
-$base-body-line-height:                          1.4 !default;
-$base-body-color:                                #333 !default;
+$base-body-font-family:                          "Open Sans", Arial, sans-serif;
+$base-body-font-weight:                          300;
+$base-body-font-size:                            1rem;
+$base-body-line-height:                          1.4;
+$base-body-color:                                #444;
 
-$base-link-color:                                #07D !default;
+$base-link-color:                                $first-color;
 $base-link-text-decoration:                      none !default;
-$base-link-hover-color:                          #059 !default;
+$base-link-hover-color:                          $first-color;
 $base-link-hover-text-decoration:                underline !default;
 
-$base-code-color:                                #8FBE00 !default;
+$base-code-color:                                #D05 !default;
 $base-code-font-size:                            (12rem/14) !default;
 $base-code-font-family:                          Consolas, monospace, serif !default;
-$base-em-color:                                  #333 !default;
+$base-em-color:                                  $base-body-color;
 $base-ins-background:                            #ffa !default;
-$base-ins-color:                                 #333 !default;
+$base-ins-color:                                 $base-body-color;
 $base-mark-background:                           #ffa !default;
-$base-mark-color:                                #333 !default;
+$base-mark-color:                                $base-body-color;
 $base-quote-font-style:                          italic !default;
 
 $base-margin-vertical:                           (15rem/14) !default;
 
-$base-heading-font-family:                       "Ubuntu Condensed", Arial, sans-serif !default;
-$base-heading-font-weight:                       400 !default;
-$base-heading-color:                             #000 !default;
+$base-heading-font-family:                       "Ubuntu Condensed", Arial, sans-serif;
+$base-heading-font-weight:                       700;
+$base-heading-color:                             #000;
 $base-heading-text-transform:                    none !default;
 $base-heading-margin-top:                        (25rem/14) !default;
-$base-h1-font-size:                              (36rem/14) !default;
-$base-h1-line-height:                            (42rem/14) !default;
-$base-h2-font-size:                              (24rem/14) !default;
-$base-h2-line-height:                            (30rem/14) !default;
-$base-h3-font-size:                              (18rem/14) !default;
-$base-h3-line-height:                            (24rem/14) !default;
-$base-h4-font-size:                              (16rem/14) !default;
-$base-h4-line-height:                            (22rem/14) !default;
-$base-h5-font-size:                              (14rem/14) !default;
-$base-h5-line-height:                            (20rem/14) !default;
-$base-h6-font-size:                              (12rem/14) !default;
-$base-h6-line-height:                            (18rem/14) !default;
+$base-h1-font-size:                              2.074rem;
+$base-h1-line-height:                            1;
+$base-h2-font-size:                              1.728rem;
+$base-h2-line-height:                            1;
+$base-h3-font-size:                              1.44rem;
+$base-h3-line-height:                            1;
+$base-h4-font-size:                              1.2rem;
+$base-h4-line-height:                            1;
+$base-h5-font-size:                              1rem;
+$base-h5-line-height:                            1;
+$base-h6-font-size:                              0.833rem;
+$base-h6-line-height:                            1;
 
 $base-list-padding-left:                         (30rem/14) !default;
 
@@ -104,6 +71,43 @@ $base-pre-font-family:                           $base-code-font-family !default
 $base-selection-background:                      #39f !default;
 $base-selection-color:                           #fff !default;
 
+// Uikit (article)
+$article-margin-top:                             (25rem/14) !default;
+
+$article-title-font-size:                        (36rem/14) !default;
+$article-title-line-height:                      (42rem/14) !default;
+$article-title-font-weight:                      normal !default;
+$article-title-text-transform:                   none !default;
+
+$article-meta-font-size:                         (12rem/14) !default;
+$article-meta-line-height:                       (18rem/14) !default;
+$article-meta-color:                             #999 !default;
+
+$article-lead-color:                             #444 !default;
+$article-lead-font-size:                         (18rem/14) !default;
+$article-lead-line-height:                       (24rem/14) !default;
+$article-lead-font-weight:                       normal !default;
+
+$article-divider-margin:                         (25rem/14) !default;
+$article-divider-border:                         #ddd !default;
+
+// Uikit (badge)
+$badge-background:                               $second-color;
+$badge-padding-horizontal:                       (5rem/14) !default;
+$badge-font-size:                                (10rem/14) !default;
+$badge-font-weight:                              bold !default;
+$badge-line-height:                              (14rem/14) !default;
+$badge-color:                                    #fff !default;
+$badge-text-transform:                           none !default;
+$badge-hover-color:                              #fff !default;
+
+$badge-notification-font-size:                   (12rem/14) !default;
+$badge-notification-line-height:                 (18rem/14) !default;
+
+$badge-success-background:                       $third-color;
+$badge-warning-background:                       #faa732 !default;
+$badge-danger-background:                        #da314b !default;
+
 // Uikit (block)
 $block-padding-vertical:                         (20rem/14) !default;
 $block-padding-vertical-large:                   (50rem/14) !default;
@@ -118,26 +122,26 @@ $block-primary-background:                       #00a8e6 !default;
 $block-secondary-background:                     #222 !default;
 
 // Uikit (breadcrumb)
-$breadcrumb-font-size:                           1rem !default;
+$breadcrumb-font-size:                           0.9rem;
 
 $breadcrumb-divider:                             "/" !default;
-$breadcrumb-divider-margin:                      (8rem/14) !default;
-$breadcrumb-disabled-color:                      #999 !default;
+$breadcrumb-divider-margin:                      0.4rem;
+$breadcrumb-disabled-color:                      $grey-color;
 
 // Uikit (button)
 $button-height:                                  (30rem/14) !default;
 $button-mini-height:                             (20rem/14) !default;
 $button-small-height:                            (25rem/14) !default;
-$button-large-height:                            (40rem/14) !default;
+$button-large-height:                            3rem;
 
 $button-line-height:                             (30rem/14) !default;
 $button-mini-line-height:                        (20rem/14) !default;
 $button-small-line-height:                       (25rem/14) !default;
-$button-large-line-height:                       (40rem/14) !default;
+$button-large-line-height:                       1.5;
 
 $button-mini-font-size:                          (11rem/14) !default;
 $button-small-font-size:                         (12rem/14) !default;
-$button-large-font-size:                         (16rem/14) !default;
+$button-large-font-size:                         1.75rem;
 
 $button-padding-horizontal:                      (12rem/14) !default;
 $button-mini-padding-horizontal:                 (6rem/14) !default;
@@ -152,18 +156,18 @@ $button-hover-color:                             #444 !default;
 $button-active-background:                       #ddd !default;
 $button-active-color:                            #444 !default;
 
-$button-primary-background:                      #00a8e6 !default;
+$button-primary-background:                      $second-color;
 $button-primary-color:                           #fff !default;
-$button-primary-hover-background:                #35b3ee !default;
+$button-primary-hover-background:                lighten($second-color, 10%);
 $button-primary-hover-color:                     #fff !default;
-$button-primary-active-background:               #0091ca !default;
+$button-primary-active-background:               darken($second-color, 10%);
 $button-primary-active-color:                    #fff !default;
 
-$button-success-background:                      #8cc14c !default;
+$button-success-background:                      $third-color;
 $button-success-color:                           #fff !default;
-$button-success-hover-background:                #8ec73b !default;
+$button-success-hover-background:                lighten($third-color, 10%);
 $button-success-hover-color:                     #fff !default;
-$button-success-active-background:               #72ae41 !default;
+$button-success-active-background:               darken($third-color, 10%);
 $button-success-active-color:                    #fff !default;
 
 $button-danger-background:                       #da314b !default;
@@ -240,6 +244,7 @@ $dropdown-navbar-animation:                      uk-slide-top-fixed !default;
 $dropdown-scrollable-height:                     (200rem/14) !default;
 
 // Uikit (form)
+// TODO: hardcoded pixel in uikit codebase
 // $form-height:                                    (30rem/14) !default;
 // $form-padding:                                   (4rem/14) (6rem/14) !default;
 // $form-border:                                    #ddd !default;
@@ -318,7 +323,7 @@ $grid-divider-border:                            #ddd !default;
 $grid-divider-border-width:                      (1rem/14) !default;
 
 // Uikit (icon)
-$icon-font-path:                                 "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts" !default;
+$icon-font-path:                                 "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts";
 
 $icon-small-font-size:                           150% !default;
 $icon-medium-font-size:                          200% !default;
@@ -459,7 +464,7 @@ $navbar-nav-padding-horizontal:                  (15rem/14) !default;
 $navbar-nav-color:                               #333 !default;
 $navbar-nav-font-size:                           (14rem/14) !default;
 $navbar-nav-font-weight:                         normal !default;
-$navbar-nav-font-family:                         "Open Sans", Arial, sans-serif !default;
+$navbar-nav-font-family:                         "Open Sans", Arial, sans-serif;
 $navbar-nav-hover-background:                    #f5f5f5 !default;
 $navbar-nav-hover-color:                         #333 !default;
 $navbar-nav-onclick-background:                  #ddd !default;
@@ -483,7 +488,7 @@ $navbar-toggle-icon-alt:                         "\f002" !default;
 $offcanvas-z-index:                              1000 !default;
 $offcanvas-background:                           rgba(0,0,0,0.1) !default;
 
-$offcanvas-bar-width:                            (270rem/14) !default;
+$offcanvas-bar-width:                            15rem;
 $offcanvas-bar-background:                       #333 !default;
 
 $offcanvas-panel-margin:                         (20rem/14) (15rem/14) !default;
@@ -584,14 +589,34 @@ $panel-divider-gutter-large:                     (35rem/14) !default;
 $panel-divider-border:                           #ddd !default;
 $panel-divider-border-width:                     (1rem/14) !default;
 
-// Uikit (subnal)
-$subnav-margin-horizontal:                       (10rem/14) !default;
+// Ukikit (slidenav)
+$slidenav-width:                                 60px !default;
+$slidenav-height:                                $slidenav-width !default;
+$slidenav-color:                                 rgba(50,50,50,0.4) !default;
+$slidenav-font-size:                             60px !default;
+$slidenav-line-height:                           $slidenav-height !default;
+$slidenav-previous-icon:                         "\f104" !default;
+$slidenav-next-icon:                             "\f105" !default;
+
+$slidenav-hover-color:                           rgba(50,50,50,0.7) !default;
+
+$slidenav-active-color:                          rgba(50,50,50,0.9) !default;
+
+$slidenav-position-previous:                     20px !default;
+$slidenav-position-next:                         $slidenav-position-previous !default;
+
+$slidenav-contrast-color:                        rgba(255,255,255,0.5) !default;
+$slidenav-contrast-hover-color:                  rgba(255,255,255,0.7) !default;
+$slidenav-contrast-active-color:                 rgba(255,255,255,0.9) !default;
+
+// Uikit (subnav)
+$subnav-margin-horizontal:                       0.4rem;
 $subnav-margin-vertical:                         $subnav-margin-horizontal !default;
 
-$subnav-color:                                   #444 !default;
-$subnav-hover-color:                             #07D !default;
-$subnav-hover-text-decoration:                   none !default;
-$subnav-active-color:                            #07D !default;
+$subnav-color:                                   $grey-color;
+$subnav-hover-color:                             $grey-color;
+$subnav-hover-text-decoration:                   underline;
+$subnav-active-color:                            $grey-color;
 
 $subnav-line-border-height:                      (10rem/14) !default;
 $subnav-line-border:                             #ddd !default;
@@ -604,7 +629,7 @@ $subnav-pill-hover-color:                        #444 !default;
 $subnav-pill-active-background:                  #00a8e6 !default;
 $subnav-pill-active-color:                       #fff !default;
 
-$subnav-disabled-color:                          #999 !default;
+$subnav-disabled-color:                          lighten($grey-color, 10%);
 
 // Uikit (tab)
 $tab-border:                                     #ddd !default;
@@ -615,37 +640,37 @@ $tab-padding-top:                                $tab-padding-vertical !default;
 $tab-padding-bottom:                             $tab-padding-vertical !default;
 $tab-margin-horizontal:                          (5rem/14) !default;
 $tab-margin-vertical:                            (5rem/14) !default;
-$tab-color:                                      #07D !default;
+$tab-color:                                      $second-color;
 $tab-hover-border:                               #f5f5f5 !default;
 $tab-hover-background:                           #f5f5f5 !default;
-$tab-hover-color:                                #059 !default;
+$tab-hover-color:                                $second-color;
 $tab-active-border:                              #ddd !default;
 $tab-active-background:                          #fff !default;
-$tab-active-color:                               #444 !default;
+$tab-active-color:                               #333;
 $tab-disabled-color:                             #999 !default;
 
 // Uikit (table)
-$table-margin-vertical:                          (15rem/14) !default;
-$table-padding-vertical:                         (8rem/14) !default;
-$table-padding-horizontal:                       (8rem/14) !default;
+$table-margin-vertical:                          1rem;
+$table-padding-vertical:                         0.4rem;
+$table-padding-horizontal:                       0.5rem;
 
 $table-caption-color:                            #999 !default;
-$table-caption-font-size:                        (12rem/14) !default;
+$table-caption-font-size:                        0.9rem;
 
-$table-striped-background:                       #f5f5f5 !default;
+$table-striped-background:                       lighten($second-color, 37.5%);
 
-$table-condensed-padding-vertical:               (4rem/14) !default;
-$table-condensed-padding-horizontal:             (8rem/14) !default;
+$table-condensed-padding-vertical:               0.2rem;
+$table-condensed-padding-horizontal:             0.5rem;
 
-$table-hover-background:                         #EEE !default;
+$table-hover-background:                         lighten($second-color, 35%);
 
 $table-active-background:                        $table-hover-background !default;
 
 // Uikit (text)
-$text-small-font-size:                           (11rem/14) !default;
-$text-small-line-height:                         (16rem/14) !default;
-$text-large-font-size:                           (18rem/14) !default;
-$text-large-line-height:                         (24rem/14) !default;
+$text-small-font-size:                           0.9rem;
+$text-small-line-height:                         $base-body-line-height;
+$text-large-font-size:                           1.1rem;
+$text-large-line-height:                         $base-body-line-height;
 $text-large-font-weight:                         normal !default;
 
 $text-muted-color:                               #999 !default;
@@ -682,22 +707,22 @@ $thumbnav-hover-opacity:                         1 !default;
 $thumbnav-active-opacity:                        1 !default;
 
 // Uikut (utility)
-$utility-container-max-width:                    none !default;
-$utility-container-padding-horizontal:           (25rem/14) !default;
+$utility-container-max-width:                    70rem;
+$utility-container-padding-horizontal:           2rem;
 
-$utility-container-large-max-width:              none !default;
-$utility-container-large-padding-horizontal:     (35rem/14) !default;
+$utility-container-large-max-width:              70rem;
+$utility-container-large-padding-horizontal:     2rem;
 
-$utility-align-horizontal:                       (15rem/14) !default;
-$utility-align-vertical:                         (15rem/14) !default;
+$utility-align-horizontal:                       1rem;
+$utility-align-vertical:                         1rem;
 
-$utility-height-viewport-min-height:             (600rem/14) !default;
+$utility-height-viewport-min-height:             40rem;
 
-$utility-margin:                                 (15rem/14) !default;
-$utility-margin-small:                           (5rem/14) !default;
-$utility-margin-large:                           (50rem/14) !default;
+$utility-margin:                                 1rem;
+$utility-margin-small:                           0.5rem;
+$utility-margin-large:                           1.5rem;
 
-$utility-border-rounded:                         (5rem/14) !default;
+$utility-border-rounded:                         0.4rem;
 
 $utility-heading-large-small-font-size:          (36rem/14) !default;
 $utility-heading-large-small-line-height:        (42rem/14) !default;
@@ -707,7 +732,7 @@ $utility-heading-large-line-height:              (64rem/14) !default;
 $utility-link-muted-color:                       #444 !default;
 $utility-link-muted-hover-color:                 #444 !default;
 
-$utility-scrollable-text-height:                 (300rem/14) !default;
+$utility-scrollable-text-height:                 20rem;
 
 $utility-scrollable-box-height:                  (170rem/14) !default;
 $utility-scrollable-box-padding:                 (10rem/14) !default;
@@ -715,10 +740,10 @@ $utility-scrollable-box-border:                  #ddd !default;
 $utility-scrollable-box-border-width:            (1rem/14) !default;
 
 // Uikit (variables)
-$breakpoint-small:                               480px !default;
-$breakpoint-medium:                              768px !default;
-$breakpoint-large:                               960px !default;
-$breakpoint-xlarge:                              1220px !default;
+$breakpoint-small:                               500px;
+$breakpoint-medium:                              1000px;
+$breakpoint-large:                               2000px;
+$breakpoint-xlarge:                              2500px;
 
 $breakpoint-mini-max:                            ($breakpoint-small - 1) !default;
 $breakpoint-small-max:                           ($breakpoint-medium - 1) !default;

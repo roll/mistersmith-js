@@ -1,5 +1,5 @@
 .introduction {
-  background-color: #2fa5d5;
+  background-color: $first-color;
 
   h1 {
     color: #000;
@@ -7,5 +7,5 @@
 }
 
 .features {
-  background-color: lighten(#2fa5d5, 15%);
+  background-color: $second-color;
 }
