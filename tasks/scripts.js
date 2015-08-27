@@ -8,13 +8,9 @@ var watch = false;
 // Build
 gulp.task('scripts:build', function() {
     var data = gulp.meta.loaders.data();
-    var filter = stack.filter('**/*.coffee')
-    return gulp.src('scripts/**/*.{js,coffee}')
+    return gulp.src('scripts/**/*.js')
         .pipe(stack.if(watch, stack.plumber(gulp.meta.handlers.error)))
         .pipe(stack.sourcemaps.init())
-        .pipe(filter)
-        .pipe(stack.coffee(config.coffee))
-        .pipe(filter.restore())
         .pipe(stack.concat('main.js'))
         .pipe(stack.uglify())
         .pipe(stack.sourcemaps.write('maps'))
@@ -30,6 +26,6 @@ gulp.task('scripts:validate', function() {
 
 // Watch
 gulp.task('scripts:watch', function() {
-    gulp.watch('scripts/**/*.{js,coffee}', ['scripts:build']);
+    gulp.watch('scripts/**/*.js', ['scripts:build']);
     watch = true;
 });
