@@ -3,7 +3,6 @@ title: Docker
 description: A simple "Hello world" exercise that introduced you to Docker.
 keywords: docker guide, docker, docker platform, virtualization framework, how to
 layout: document.html
-route: docs
 ---
 
 # Dockerizing applications: A "Hello world"

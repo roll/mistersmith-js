@@ -5,15 +5,8 @@
 @import "base";
 
 // Blocks
+@import "blocks/features";
 @import "blocks/footer";
-
-// Routes
-body[data-route="index"] {
-  @import "routes/index";
-}
-body[data-route="docs"] {
-  @import "routes/docs";
-}
-body[data-route="blog"] {
-  @import "routes/blog";
-}
+@import "blocks/header";
+@import "blocks/intro";
+@import "blocks/menu";

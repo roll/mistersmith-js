@@ -3,7 +3,6 @@ title: Dockerizing a Node.js web app
 description: Installing and running a Node.js app with Docker
 keywords: docker, example, package installation, node, centos
 layout: document.html
-route: docs
 ---
 
 # Dockerizing a Node.js web app

@@ -1,6 +1,5 @@
 ---
 layout: document.html
-route: docs
 ---
 
 # Welcome to Mr. Smith Docs!
