@@ -28,6 +28,13 @@ gulp.task('pages:build', function() {
             .use(stack.markdown(config.markdown))
             .use(stack.headings('h2,h3'))
             .use(stack.excerpts())
+            .use(stack.slug({
+                property: 'title',
+                patterns: ['*.html', '*.md'],
+                renameFiles: false,
+                lower: true,
+                remove: /[.]/g,
+            }))
             .use(gulp.meta.plugins.links({
                 relative: false,
                 pattern: ':permalink',

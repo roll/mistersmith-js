@@ -1,5 +1,6 @@
 ---
+title: First Post
 layout: blogpost.html
 ---
 
-# First Post
+# {{ title }}
