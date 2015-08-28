@@ -39,12 +39,12 @@ gulp.task('deploy-amazon', function() {
 
 // Deploy github
 gulp.task('deploy-github', function() {
-    var filter = stack.filter('**/*.html')
+    var filter = stack.filter('**/*.html', {restore: true});
     var basedir = config.ghpages.basedir
     return gulp.src('build/**')
         .pipe(filter)
-        .pipe(stack.if(basedir, stack.replace(/="\/(?=[^\/])/g, '="'+basedir+'/')))
-        .pipe(filter.restore())
+        .pipe(stack.if(!!basedir, stack.replace(/="\/(?=[^\/])/g, '="'+basedir+'/')))
+        .pipe(filter.restore)
         .pipe(stack.ghpages());
 });
 
