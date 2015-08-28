@@ -2,7 +2,7 @@ jQuery(function () {
     anchors.options = {
       placement: 'right',
       visible: 'always',
-      icon: '¶'
+      icon: '¶',
     };
     anchors.add('h2, h3');
 });
