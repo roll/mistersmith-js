@@ -17,10 +17,6 @@ browsersync:
   ui:
     port: 3101
 
-# Coffee
-coffee:
-  bare: true
-
 # Ghpages
 ghpages:
   basedir: /mistersmith
