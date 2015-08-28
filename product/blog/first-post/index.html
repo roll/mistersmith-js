@@ -8,7 +8,7 @@
   <meta name="description" content="Mr. Smith">
   <meta name="keywords" content="mr. smith">
 
-  <title>Welcome - Mr. Smith</title>
+  <title>First Post - Mr. Smith</title>
 
   <link rel="icon" href="/mistersmith/images/favicon.png">
   <link rel="apple-touch-icon" href="/mistersmith/images/favicon.png">
@@ -37,12 +37,12 @@
         
         
         
-        <li class="uk-active" data-uk-dropdown="{mode: 'click'}">
+        <li  data-uk-dropdown="{mode: 'click'}">
           <a>Docs <span class="fa fa-caret-down"></span></a>
           <div class="uk-dropdown ul-dropdown-navbar">
             <ul class="uk-nav uk-nav-navbar">
               
-              <li class="uk-active">
+              <li >
                 <a href="/mistersmith/docs/">Introduction</a>
               </li>
               
@@ -69,8 +69,8 @@
 
       <ul class="uk-navbar-nav uk-navbar-flip uk-hidden-small">
         <li><a href=""><span class="fa fa-search"></span> Search</a></li>
-        <li ><a href="/mistersmith/"><span class="fa fa-arrow-left"></span> Prev</a></li>
-        <li ><a href="/mistersmith/docs/docker/">Next <span class="fa fa-arrow-right"></span></a></li>
+        <li class="disabled"><a href=""><span class="fa fa-arrow-left"></span> Prev</a></li>
+        <li class="disabled"><a href="">Next <span class="fa fa-arrow-right"></span></a></li>
         <li><a href="//github.com/"><span class="fa fa-github"></span> Github</a></li>
       </ul>
 
@@ -84,21 +84,9 @@
 
 
   
-<div class="uk-container uk-margin-top">
+  <h1 id="-title-">First Post</h1>
 
-  <div class="uk-grid">
-    <div class="uk-width-medium-2-10"></div>
-    <div class="uk-width-medium-8-10"><h1 id="welcome-to-mr-smith-docs-">Welcome to Mr. Smith Docs!</h1>
-<p>To get started clone Mr. Smith repository, install dependencies and run gulp:</p>
-<pre><code class="hljs bash">$ git clone https://github.com/roll/mistersmith
-$ <span class="hljs-built_in">cd</span> mistersmith
-$ npm install
-$ npm dedupe
-$ npm run gulp</code></pre></div>
-  </div>
-
-</div>
-
+  
 
   <footer id="footer">
   <div class="uk-container uk-container-center">
@@ -126,6 +114,7 @@ $ npm run gulp</code></pre></div>
   <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/uikit.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/sticky.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.2.1/anchor.min.js"></script>
   <script src="/mistersmith/scripts/main.js"></script>
 
   <!-- Google Analytics -->

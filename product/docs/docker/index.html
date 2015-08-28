@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mr. Smith">
+  <meta name="keywords" content="docker guide, docker, docker platform, virtualization framework, how to">
+
+  <title>Docker - Mr. Smith</title>
+
+  <link rel="icon" href="/mistersmith/images/favicon.png">
+  <link rel="apple-touch-icon" href="/mistersmith/images/favicon.png">
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Ubuntu+Condensed:400&subset=latin">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/tomorrow-night.min.css">
+  <link rel="stylesheet" href="/mistersmith/styles/main.css">
+
+</head>
+<body>
+
+  <header id="header" data-uk-sticky>
+
+  <nav id="navbar" class="uk-navbar">
+    <div class="uk-container uk-container-center">
+
+      <a class="uk-navbar-brand uk-hidden-small" href="/mistersmith/">Mr. Smith</a>
+
+      <ul class="uk-navbar-nav uk-hidden-small">
+        
+        
+        <li >
+          <a href="/mistersmith/">Home</a>
+        </li>
+        
+        
+        
+        <li  data-uk-dropdown="{mode: 'click'}">
+          <a>Docs <span class="fa fa-caret-down"></span></a>
+          <div class="uk-dropdown ul-dropdown-navbar">
+            <ul class="uk-nav uk-nav-navbar">
+              
+              <li >
+                <a href="/mistersmith/docs/">Introduction</a>
+              </li>
+              
+              <li class="uk-active">
+                <a href="/mistersmith/docs/docker/">Docker</a>
+              </li>
+              
+              <li >
+                <a href="/mistersmith/docs/nodejs/">Nodejs</a>
+              </li>
+              
+            </ul>
+          </div>
+        </li>
+        
+        
+        
+        <li >
+          <a href="/mistersmith/blog/">Blog</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="uk-navbar-nav uk-navbar-flip uk-hidden-small">
+        <li><a href=""><span class="fa fa-search"></span> Search</a></li>
+        <li ><a href="/mistersmith/docs/"><span class="fa fa-arrow-left"></span> Prev</a></li>
+        <li ><a href="/mistersmith/docs/nodejs/">Next <span class="fa fa-arrow-right"></span></a></li>
+        <li><a href="//github.com/"><span class="fa fa-github"></span> Github</a></li>
+      </ul>
+
+      <a href="#menu" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
+      <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Mr. Smith</div>
+
+    </div>
+  </nav>
+
+</header>
+
+
+  
+<div class="uk-container uk-margin-top">
+
+  <div class="uk-grid">
+    <div class="uk-width-medium-2-10"></div>
+    <div class="uk-width-medium-8-10"><h1 id="dockerizing-applications-a-hello-world-">Dockerizing applications: A &quot;Hello world&quot;</h1>
+<p><em>So what&#39;s this Docker thing all about?</em></p>
+<p>Docker allows you to run applications inside containers. Running an
+application inside a container takes a single command: <code>docker run</code>.</p>
+<h2 id="hello-world">Hello world</h2>
+<p>Let&#39;s try it now.</p>
+<pre><code class="hljs">$ docker run <span class="hljs-string">ubuntu:</span><span class="hljs-number">14.04</span> <span class="hljs-regexp">/bin/</span>echo <span class="hljs-string">'Hello world'</span>
+Hello world</code></pre>
+
+<p>And you just launched your first container!</p>
+<p>So what just happened? Let&#39;s step through what the <code>docker run</code> command
+did.</p>
+<p>First we specified the <code>docker</code> binary and the command we wanted to
+execute, <code>run</code>. The <code>docker run</code> combination <em>runs</em> containers.</p>
+<p>Next we specified an image: <code>ubuntu:14.04</code>. This is the source of the container
+we ran. Docker calls this an image. In this case we used an Ubuntu 14.04
+operating system image.</p>
+<p>When you specify an image, Docker looks first for the image on your
+Docker host. If it can&#39;t find it then it downloads the image from the public
+image registry: <a href="https://hub.docker.com">Docker Hub</a>.</p>
+<p>Next we told Docker what command to run inside our new container:</p>
+<pre><code class="hljs">/bin/<span class="hljs-built_in">echo</span> <span class="hljs-string">'Hello world'</span></code></pre>
+
+<p>When our container was launched Docker created a new Ubuntu 14.04
+environment and then executed the <code>/bin/echo</code> command inside it. We saw
+the result on the command line:</p>
+<pre><code class="hljs"><span class="hljs-title">Hello</span> world</code></pre>
+
+<p>So what happened to our container after that? Well Docker containers
+only run as long as the command you specify is active. Here, as soon as
+<code>Hello world</code> was echoed, the container stopped.</p>
+<h2 id="an-interactive-container">An interactive container</h2>
+<p>Let&#39;s try the <code>docker run</code> command again, this time specifying a new
+command to run in our container.</p>
+<pre><code class="hljs"><span class="hljs-variable">$ </span>docker run -t -i <span class="hljs-symbol">ubuntu:</span><span class="hljs-number">14.04</span> /bin/bash
+root<span class="hljs-variable">@af8bae53bdd3</span><span class="hljs-symbol">:/</span><span class="hljs-comment">#</span></code></pre>
+
+<p>Here we&#39;ve again specified the <code>docker run</code> command and launched an
+<code>ubuntu:14.04</code> image. But we&#39;ve also passed in two flags: <code>-t</code> and <code>-i</code>.
+The <code>-t</code> flag assigns a pseudo-tty or terminal inside our new container
+and the <code>-i</code> flag allows us to make an interactive connection by
+grabbing the standard in (<code>STDIN</code>) of the container.</p>
+<p>We&#39;ve also specified a new command for our container to run:
+<code>/bin/bash</code>. This will launch a Bash shell inside our container.</p>
+<p>So now when our container is launched we can see that we&#39;ve got a
+command prompt inside it:</p>
+<pre><code class="hljs"><span class="hljs-attribute">root</span><span class="hljs-variable">@af8bae53bdd3</span>:/#</code></pre>
+
+<p>Let&#39;s try running some commands inside our container:</p>
+<pre><code class="hljs"><span class="hljs-attribute">root</span><span class="hljs-variable">@af8bae53bdd3</span>:/# pwd
+/
+root<span class="hljs-variable">@af8bae53bdd3</span>:/# ls
+bin boot dev etc home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var</code></pre>
+
+<p>You can see we&#39;ve run the <code>pwd</code> to show our current directory and can
+see we&#39;re in the <code>/</code> root directory. We&#39;ve also done a directory listing
+of the root directory which shows us what looks like a typical Linux
+file system.</p>
+<p>You can play around inside this container and when you&#39;re done you can
+use the <code>exit</code> command or enter Ctrl-D to finish.</p>
+<pre><code class="hljs"><span class="hljs-attribute">root</span><span class="hljs-variable">@af8bae53bdd3</span>:/# exit</code></pre>
+
+<p>As with our previous container, once the Bash shell process has
+finished, the container is stopped.</p>
+<h2 id="a-daemonized-hello-world">A daemonized Hello world</h2>
+<p>Now a container that runs a command and then exits has some uses but
+it&#39;s not overly helpful. Let&#39;s create a container that runs as a daemon,
+like most of the applications we&#39;re probably going to run with Docker.</p>
+<p>Again we can do this with the <code>docker run</code> command:</p>
+<pre><code class="hljs">$ docker run -d <span class="hljs-string">ubuntu:</span><span class="hljs-number">14.04</span> <span class="hljs-regexp">/bin/</span>sh -c <span class="hljs-string">"while true; do echo hello world; sleep 1; done"</span>
+<span class="hljs-number">1e5535038</span>e285177d5214659a068137486f96ee5c2e85a4ac52dc83f2ebe4147</code></pre>
+
+<p>Wait, what? Where&#39;s our &quot;hello world&quot; output? Let&#39;s look at what we&#39;ve run here.
+It should look pretty familiar. We ran <code>docker run</code> but this time we
+specified a flag: <code>-d</code>. The <code>-d</code> flag tells Docker to run the container
+and put it in the background, to daemonize it.</p>
+<p>We also specified the same image: <code>ubuntu:14.04</code>.</p>
+<p>Finally, we specified a command to run:</p>
+<pre><code class="hljs">/bin/sh -c "while true; <span class="hljs-flow">do</span> <span class="hljs-keyword">echo</span> hello world; sleep <span class="hljs-number">1</span>; done"</code></pre>
+
+<p>This is the (hello) world&#39;s silliest daemon: a shell script that echoes
+<code>hello world</code> forever.</p>
+<p>So why aren&#39;t we seeing any <code>hello world</code>&#39;s? Instead Docker has returned
+a really long string:</p>
+<pre><code class="hljs">1e5535038e285177d5214659a068137486f96ee5c2e85a4ac52dc83f2ebe4147</code></pre>
+
+<p>This really long string is called a <em>container ID</em>. It uniquely
+identifies a container so we can work with it.</p>
+<blockquote>
+<p><strong>Note:</strong>
+The container ID is a bit long and unwieldy and a bit later
+on we&#39;ll see a shorter ID and some ways to name our containers to make
+working with them easier.</p>
+</blockquote>
+<p>We can use this container ID to see what&#39;s happening with our <code>hello world</code> daemon.</p>
+<p>Firstly let&#39;s make sure our container is running. We can
+do that with the <code>docker ps</code> command. The <code>docker ps</code> command queries
+the Docker daemon for information about all the containers it knows
+about.</p>
+<pre><code class="hljs">$ docker ps
+CONTAINER ID  IMAGE         COMMAND               CREATED        STATUS       PORTS NAMES
+<span class="hljs-number">1e5535038</span>e28  <span class="hljs-string">ubuntu:</span><span class="hljs-number">14.04</span>  <span class="hljs-regexp">/bin/</span>sh -c <span class="hljs-string">'while tr  2 minutes ago  Up 1 minute        insane_babbage</span></code></pre>
+
+<p>Here we can see our daemonized container. The <code>docker ps</code> has returned some useful
+information about it, starting with a shorter variant of its container ID:
+<code>1e5535038e28</code>.</p>
+<p>We can also see the image we used to build it, <code>ubuntu:14.04</code>, the command it
+is running, its status and an automatically assigned name,
+<code>insane_babbage</code>.</p>
+<blockquote>
+<p><strong>Note:</strong>
+Docker automatically names any containers you start, a
+little later on we&#39;ll see how you can specify your own names.</p>
+</blockquote>
+<p>Okay, so we now know it&#39;s running. But is it doing what we asked it to do? To see this
+we&#39;re going to look inside the container using the <code>docker logs</code>
+command. Let&#39;s use the container name Docker assigned.</p>
+<pre><code class="hljs"><span class="hljs-variable">$ </span>docker logs insane_babbage
+hello world
+hello world
+hello world
+. . .</code></pre>
+
+<p>The <code>docker logs</code> command looks inside the container and returns its standard
+output: in this case the output of our command <code>hello world</code>.</p>
+<p>Awesome! Our daemon is working and we&#39;ve just created our first
+Dockerized application!</p>
+<p>Now we&#39;ve established we can create our own containers let&#39;s tidy up
+after ourselves and stop our daemonized container. To do this we use the
+<code>docker stop</code> command.</p>
+<pre><code class="hljs"><span class="hljs-variable">$ </span>docker stop insane_babbage
+insane_babbage</code></pre>
+
+<p>The <code>docker stop</code> command tells Docker to politely stop the running
+container. If it succeeds it will return the name of the container it
+has just stopped.</p>
+<p>Let&#39;s check it worked with the <code>docker ps</code> command.</p>
+<pre><code class="hljs"><span class="hljs-variable">$ </span>docker ps
+<span class="hljs-constant">CONTAINER ID </span> <span class="hljs-constant">IMAGE </span>        <span class="hljs-constant">COMMAND </span>              <span class="hljs-constant">CREATED </span>       <span class="hljs-constant">STATUS </span>      <span class="hljs-constant">PORTS NAMES</span></code></pre>
+
+<p>Excellent. Our container has been stopped.</p>
+<h1 id="next-steps">Next steps</h1>
+<p>Now we&#39;ve seen how simple it is to get started with Docker. Let&#39;s learn how to
+do some more advanced tasks.</p>
+<p>Go to <a href="/mistersmith/userguide/usingdocker">Working With Containers</a>.</p>
+</div>
+  </div>
+
+</div>
+
+
+  <footer id="footer">
+  <div class="uk-container uk-container-center">
+
+    <div class="uk-margin-large-top uk-margin-large-bottom">
+      Footer!
+    </div>
+
+  </div>
+</footer>
+
+  <nav id="menu" class="uk-offcanvas">
+  <div class="uk-offcanvas-bar">
+
+    <ul class="uk-nav uk-nav-offcanvas">
+      <li class="uk-active"><a href="/mistersmith/">Home</a></li>
+      <li><a href="/mistersmith/docs/">Docs</a></li>
+      <li><a href="/mistersmith/blog/">Blog</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/uikit.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/sticky.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.2.1/anchor.min.js"></script>
+  <script src="/mistersmith/scripts/main.js"></script>
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-XXXXX-X', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>
