@@ -31,7 +31,7 @@ gulp.task('clean', function (callback) {
 
 // Deploy amazon
 gulp.task('deploy-amazon', function() {
-    var source = path.join(config.paths.build, '**');
+    var source = path.join(config.paths.build, config.build, '**');
     var publisher = stack.awspublish.create(config.awspublish);
     return gulp.src(source)
         .pipe(publisher.publish())
@@ -41,7 +41,7 @@ gulp.task('deploy-amazon', function() {
 
 // Deploy github
 gulp.task('deploy-github', function() {
-    var source = path.join(config.paths.build, '**');
+    var source = path.join(config.paths.build, config.build, '**');
     var filter = stack.filter('**/*.html', {restore: true});
     var basedir = config.ghpages.basedir
     return gulp.src(source)

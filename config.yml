@@ -23,7 +23,6 @@ autoprefixer:
 
 # Browsersync
 browsersync:
-  server: 'build'
   port: 3100
   notify: false
   ui:
