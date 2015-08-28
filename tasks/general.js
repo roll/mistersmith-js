@@ -25,13 +25,15 @@ gulp.task('build', function(callback) {
 
 // Clean
 gulp.task('clean', function (callback) {
-    stack.del(['build/**'], callback);
+    var source = path.join(config.paths.build, config.build, '**');
+    stack.del(source, callback);
 });
 
 // Deploy amazon
 gulp.task('deploy-amazon', function() {
+    var source = path.join(config.paths.build, '**');
     var publisher = stack.awspublish.create(config.awspublish);
-    return gulp.src('build/**')
+    return gulp.src(source)
         .pipe(publisher.publish())
         .pipe(publisher.sync())
         .pipe(stack.awspublish.reporter());
@@ -39,9 +41,10 @@ gulp.task('deploy-amazon', function() {
 
 // Deploy github
 gulp.task('deploy-github', function() {
+    var source = path.join(config.paths.build, '**');
     var filter = stack.filter('**/*.html', {restore: true});
     var basedir = config.ghpages.basedir
-    return gulp.src('build/**')
+    return gulp.src(source)
         .pipe(filter)
         .pipe(stack.if(!!basedir, stack.replace(/="\/(?=[^\/])/g, '="'+basedir+'/')))
         .pipe(filter.restore)
@@ -50,10 +53,17 @@ gulp.task('deploy-github', function() {
 
 // Serve
 gulp.task('serve', ['watch'], function(callback) {
-    stack.browsersync.init(config.browsersync);
-    gulp.watch('build/**', function(file) {
-        var relpath = path.relative('build', file.path);
-        if (path.extname(relpath) == '.map') return;
+    var server = path.join(config.paths.build, config.build);
+    var source = path.join(server, '**');
+    var params = stack.lodash.assign(
+        stack.lodash.clone(config.browsersync, true), {server: server}
+    );
+    stack.browsersync.init(params);
+    gulp.watch(source, function(file) {
+        var relpath = path.relative(server, file.path);
+        if (path.extname(relpath) == '.map') {
+            return;
+        }
         stack.browsersync.reload(relpath);
     });
     callback();

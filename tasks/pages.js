@@ -1,4 +1,5 @@
 'use strict';
+var path = require('path');
 var gulp = require('gulp');
 var stack = gulp.meta.loaders.stack();
 var config = gulp.meta.loaders.config();
@@ -7,9 +8,11 @@ var watch = false;
 
 // Build
 gulp.task('pages:build', function() {
+    var source = path.join(config.paths.pages, '**');
+    var target = path.join(config.paths.build, config.build);
+    var render = stack.nunjucks.configure(config.paths.layouts, config.nunjucks);
     var data = gulp.meta.loaders.data();
-    var env = stack.nunjucks.configure('layouts', config.nunjucks);
-    return gulp.src('pages/**')
+    return gulp.src(source)
         .pipe(stack.frontmatter()).on('data', function(file) {
             stack.lodash.assign(file, file.frontMatter);
             file.template = file.template || file.layout;
@@ -52,17 +55,23 @@ gulp.task('pages:build', function() {
                 directory: 'layouts',
             }))
         )
-        .pipe(gulp.dest('build'));
+        .pipe(gulp.dest(target));
 });
 
 // Validate
 gulp.task('pages:validate', function() {
-    return gulp.src('build/**/*.css')
+    var source = path.join(config.paths.build, config.build, '**/*.html');
+    return gulp.src(source)
         .pipe(stack.w3cjs());
 });
 
 // Watch
 gulp.task('pages:watch', function() {
-    gulp.watch(['data/**', 'layouts/**', 'pages/**'], ['pages:build']);
+    var source = [
+        path.join(config.paths.data, '**'),
+        path.join(config.paths.layouts, '**'),
+        path.join(config.paths.pages, '**'),
+    ];
+    gulp.watch(source, ['pages:build']);
     watch = true;
 });

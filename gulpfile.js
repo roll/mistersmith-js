@@ -79,7 +79,12 @@ function update_hash_from_cli(option, hash) {
     updates.forEach(function (value){
         var splited = value.split('=');
         var key = splited[0];
-        var value = eval(splited[1]);
+        //TODO: reimplement
+        try {
+            var value = eval(splited[1]);
+        } catch (error) {
+            var value = splited[1];
+        }
         update_hash_by_key_value(hash, key, value);
     });
     return hash;

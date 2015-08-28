@@ -1,3 +1,15 @@
+# General
+name: mistersmith
+build: develop
+paths:
+  build: build
+  data: data
+  images: images
+  layouts: layouts
+  pages: pages
+  scripts: scripts
+  styles: styles
+
 # Awspublish
 awspublish:
   region: region
